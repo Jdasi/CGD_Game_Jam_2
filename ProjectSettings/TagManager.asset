@@ -14,13 +14,13 @@ TagManager:
   - 
   - 
   - Wheelchair
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - LeftArm
+  - RightArm
+  - LeftLeg
+  - RightLeg
+  - Body
+  - wheel
+  - Gun
   - 
   - 
   - 

@@ -5,7 +5,9 @@ using UnityEngine;
 public class GunAiming : MonoBehaviour
 {
     [SerializeField] Rigidbody2D gun_aimer;
-    [SerializeField] HingeJoint2D shoulder_joint;
+    [SerializeField] Rigidbody2D gun;
+    [SerializeField] private GameObject particle_effect;
+    [SerializeField] private Transform muzzle;
     [SerializeField] float aim_force = 10;
 
     private Vector2 target_pos = new Vector2();
@@ -15,6 +17,15 @@ public class GunAiming : MonoBehaviour
     void Update()
     {
         UpdateTargetPos();
+        fire = Input.GetButtonDown("Fire1");
+        if (fire)
+        {
+            gun.AddForce(gun.transform.up * 10000);
+            var particle = Instantiate(particle_effect);
+            particle.transform.position = muzzle.position;
+            particle.transform.rotation = muzzle.rotation;
+            Destroy(particle, 5);
+        }
     }
 
 
@@ -22,9 +33,8 @@ public class GunAiming : MonoBehaviour
     {
 		gun_aimer.AddForce(-target_pos.normalized * aim_force);
 
-        if (Input.GetButton("Fire1"))
-            gun_aimer.AddForce(-gun_aimer.transform.forward * 100000000);
-	}
+        
+    }
 
 
     void UpdateTargetPos()
