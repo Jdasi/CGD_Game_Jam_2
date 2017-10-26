@@ -75,7 +75,7 @@ public class GunAiming : MonoBehaviour
 
     void UpdateTargetPos()
     {
-       Vector2 mousePos = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
+        Vector2 mousePos = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
         target_pos = new Vector2(Screen.width * 0.5f, Screen.height * 0.5f) - mousePos;
     }
 
