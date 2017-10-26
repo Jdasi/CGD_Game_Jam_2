@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SceneManager : MonoBehaviour
+public class LevelManager : MonoBehaviour
 {
     public GameObject assassination_target;
 
@@ -14,24 +14,24 @@ public class SceneManager : MonoBehaviour
     public float level_timer;
     public float level_time_limit;
 
-	// Use this for initialization
-	void Start ()
+    // Use this for initialization
+    void Start()
     {
         // Set Timer
         level_timer = 0;
     }
-	
-	// Update is called once per frame
-	void Update ()
+
+    // Update is called once per frame
+    void Update()
     {
         level_timer += Time.deltaTime;
 
-        if(level_timer > level_time_limit)
+        if (level_timer > level_time_limit)
         {
             // Game Over!
             Debug.Log("MISSION FAILED");
         }
-	}
+    }
 
 
 
@@ -46,7 +46,7 @@ public class SceneManager : MonoBehaviour
 
     private void SpawnTarget()
     {
-        target =  Instantiate(assassination_target, target_spawn_pos.position, transform.rotation);
+        target = Instantiate(assassination_target, target_spawn_pos.position, transform.rotation);
         target.GetComponent<TargetAI>().SetTarget(target_speech_pos.position);
     }
 
@@ -58,3 +58,4 @@ public class SceneManager : MonoBehaviour
         Debug.Log("PlayingCinematic...");
     }
 }
+
