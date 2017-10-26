@@ -10,6 +10,7 @@ public class GunAiming : MonoBehaviour
     [SerializeField] float ejection_force;
     [SerializeField] float hit_force;
     [SerializeField] LayerMask hit_layers;
+    [SerializeField] WheelchairControl wheelchair;
 
     [Header("References")]
     [SerializeField] Rigidbody2D gun_aimer;
@@ -64,9 +65,11 @@ public class GunAiming : MonoBehaviour
 
 	void FixedUpdate ()
     {
-		gun_aimer.AddForce(-target_pos.normalized * aim_force);
+        Vector3 gun_force = -target_pos.normalized * aim_force;
+		gun_aimer.AddForce(gun_force);
 
-        
+        if (wheelchair != null)
+            wheelchair.rigid_body.AddForce(-gun_force);
     }
 
 

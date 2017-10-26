@@ -13,6 +13,7 @@ public class WheelchairControl : MonoBehaviour
     [SerializeField] float torque_back;
 
     [Header("References")]
+    public Rigidbody2D rigid_body;
     [SerializeField] WheelJoint2D front_wheel;
     [SerializeField] WheelJoint2D back_wheel;
 

@@ -380,6 +380,7 @@ MonoBehaviour:
   speed_back: 20000
   torque_forward: 20000
   torque_back: 20000
+  rigid_body: {fileID: 50649902328281884}
   front_wheel: {fileID: 235482203091887096}
   back_wheel: {fileID: 235482203091887096}
 --- !u!212 &212069280998238944

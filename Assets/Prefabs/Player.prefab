@@ -1158,6 +1158,7 @@ MonoBehaviour:
   hit_layers:
     serializedVersion: 2
     m_Bits: 4294934527
+  wheelchair: {fileID: 0}
   gun_aimer: {fileID: 50319266040379688}
   gun: {fileID: 50725149769102920}
   ejection_point: {fileID: 4817015322299998}
