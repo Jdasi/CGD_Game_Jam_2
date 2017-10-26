@@ -44,6 +44,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1158399659001308
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4817015322299998}
+  m_Layer: 0
+  m_Name: gun_ejection_point
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1161119363323954
 GameObject:
   m_ObjectHideFlags: 1
@@ -383,7 +398,7 @@ Transform:
   m_LocalScale: {x: 0.9785784, y: 0.52073824, z: 1}
   m_Children: []
   m_Father: {fileID: 4479072820143548}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90.00001}
 --- !u!4 &4254130683284640
 Transform:
@@ -396,7 +411,7 @@ Transform:
   m_LocalScale: {x: 0.6126324, y: 1.0446683, z: 1}
   m_Children: []
   m_Father: {fileID: 4479072820143548}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90.00001}
 --- !u!4 &4420173645069092
 Transform:
@@ -421,6 +436,7 @@ Transform:
   m_LocalPosition: {x: 0.22132826, y: -0.0005084276, z: -2.7726767}
   m_LocalScale: {x: 0.35176715, y: 3.5588152, z: 1}
   m_Children:
+  - {fileID: 4817015322299998}
   - {fileID: 4819198224915388}
   - {fileID: 4254130683284640}
   - {fileID: 4200473156795228}
@@ -504,6 +520,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 1.2930001}
+--- !u!4 &4817015322299998
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1158399659001308}
+  m_LocalRotation: {x: -0.0009732181, y: 0.707106, z: -0.70710623, w: 0.00097340904}
+  m_LocalPosition: {x: 0.6352794, y: 0.025935436, z: -0.0005085394}
+  m_LocalScale: {x: 2.842771, y: 1, z: 0.28101185}
+  m_Children: []
+  m_Father: {fileID: 4479072820143548}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: -1.4510001, z: 0}
 --- !u!4 &4819198224915388
 Transform:
   m_ObjectHideFlags: 1
@@ -515,7 +544,7 @@ Transform:
   m_LocalScale: {x: 2.841485, y: 1, z: 0.28229776}
   m_Children: []
   m_Father: {fileID: 4479072820143548}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: -180, y: -90, z: 89.99999}
 --- !u!4 &4878827544599850
 Transform:
@@ -1122,12 +1151,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2963ffa1ed076c647972eb6cb685ec43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  aim_force: 60
+  recoil_force: 10000
+  ejection_force: 750
+  hit_force: 4000
+  hit_layers:
+    serializedVersion: 2
+    m_Bits: 4294934527
   gun_aimer: {fileID: 50319266040379688}
   gun: {fileID: 50725149769102920}
+  ejection_point: {fileID: 4817015322299998}
   particle_effect: {fileID: 1247077968793682, guid: d2ea3e4967b39ba448f25650e43d9d3f,
     type: 2}
   muzzle: {fileID: 4819198224915388}
-  aim_force: 60
+  bullet_casing_prefab: {fileID: 1250158307648726, guid: 681e58386dd556644ac3e1aa56c2479c,
+    type: 2}
 --- !u!120 &120807773332545708
 LineRenderer:
   m_ObjectHideFlags: 1
