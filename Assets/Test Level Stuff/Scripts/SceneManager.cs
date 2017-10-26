@@ -8,7 +8,6 @@ public class SceneManager : MonoBehaviour
 
     public Transform target_spawn_pos;
     public Transform target_speech_pos;
-    public Transform player_spawn_pos;
     public GameObject player;
     private GameObject target;
 
@@ -22,8 +21,6 @@ public class SceneManager : MonoBehaviour
     {
         // Set Timer
         level_timer = 0;
-        // Set Player Position
-        player.transform.position = player_spawn_pos.transform.position;
 
         play_cinematic = false;
 
@@ -47,12 +44,12 @@ public class SceneManager : MonoBehaviour
     {
         PlayCinematic();
 
-        InitialiseTarget();
+        SpawnTarget();
     }
 
 
 
-    private void InitialiseTarget()
+    private void SpawnTarget()
     {
         target =  Instantiate(assassination_target, target_spawn_pos.position, transform.rotation);
         target.GetComponent<TargetAI>().SetTarget(target_speech_pos.position);
