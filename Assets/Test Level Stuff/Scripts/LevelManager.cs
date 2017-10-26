@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class LevelManager : MonoBehaviour
 {
+    public Camera main_cam;
+    public Camera cinematic_cam;
+
     public GameObject assassination_target;
 
     public Transform target_spawn_pos;
@@ -13,6 +16,8 @@ public class LevelManager : MonoBehaviour
 
     public float level_timer;
     public float level_time_limit;
+
+    private bool playing_cinematic;
 
     // Use this for initialization
     void Start()
@@ -52,8 +57,11 @@ public class LevelManager : MonoBehaviour
 
 
 
-    void PlayCinematic()
+    private void PlayCinematic()
     {
+        playing_cinematic = true;
+        main_cam.enabled = false;
+        cinematic_cam.enabled = true;
         // STOPTIMER
         Debug.Log("PlayingCinematic...");
     }
