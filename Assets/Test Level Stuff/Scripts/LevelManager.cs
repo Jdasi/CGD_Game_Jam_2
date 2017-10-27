@@ -49,6 +49,9 @@ public class LevelManager : MonoBehaviour
 
     private void EnableTarget()
     {
+        if (target.activeInHierarchy)
+            return;
+        
         target.gameObject.SetActive(true);
     }
 
