@@ -14,6 +14,9 @@ public class GunAiming : MonoBehaviour
     [SerializeField] float min_ejection_torque;
     [SerializeField] float max_ejection_torque;
 
+    [Space]
+    [SerializeField] float bullet_speed;
+
     [SerializeField] LayerMask hit_layers;
     [SerializeField] WheelchairControl wheelchair;
 
@@ -24,6 +27,7 @@ public class GunAiming : MonoBehaviour
     [SerializeField] GameObject particle_effect;
     [SerializeField] Transform muzzle;
     [SerializeField] GameObject bullet_casing_prefab;
+    [SerializeField] GameObject bullet_prefab;
 
     private Vector3 target_pos;
     private bool fire = false;
@@ -42,7 +46,7 @@ public class GunAiming : MonoBehaviour
 
             var particle = Instantiate(particle_effect);
             particle.transform.position = muzzle.position;
-            particle.transform.rotation = muzzle.rotation;
+            particle.transform.rotation = Quaternion.LookRotation(gun.transform.right);
             Destroy(particle, 5);
 
             SpawnBulletCasing();
@@ -70,8 +74,31 @@ public class GunAiming : MonoBehaviour
             return;
 
         Debug.Log(hit.rigidbody.name);
-        Vector3 dir = (hit.transform.position - gun.transform.position).normalized;
-        hit.rigidbody.AddForce(dir * hit_force);
+        StartCoroutine(BulletCamSequence(hit));
+    }
+
+
+    IEnumerator BulletCamSequence(RaycastHit2D _hit)
+    {
+        CameraManager cam = GameManager.scene.camera_manager;
+        var clone = Instantiate(bullet_prefab, muzzle.position,
+            gun.transform.rotation);
+
+        Bullet bullet = clone.GetComponent<Bullet>();
+        bullet.Init(gun.transform.right, bullet_speed, hit_force);
+
+        SloMoManager.time_scale = 0.01f;
+        cam.SetTarget(bullet.transform, 10);
+        cam.update_mode = CameraUpdateMode.DELTA;
+
+        yield return new WaitUntil(() => bullet == null);
+
+        SloMoManager.time_scale = 1;
+
+        yield return new WaitForSeconds(1);
+
+        cam.SetTarget(GameManager.scene.player.bod.transform, cam.original_zoom);
+        cam.update_mode = CameraUpdateMode.FIXED_DELTA;
     }
 
 
@@ -88,12 +115,6 @@ public class GunAiming : MonoBehaviour
     void UpdateTargetPos()
     {
         target_pos = Camera.allCameras[0].ScreenToWorldPoint(Input.mousePosition);
-    }
-
-
-    void OnDrawGizmosSelected()
-    {
-        Gizmos.DrawSphere(target_pos, 1);
     }
 
 }

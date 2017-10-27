@@ -4,19 +4,31 @@ using UnityEngine;
 
 public struct TempSceneRefs
 {
-    /*
-    public StatTracker stat_tracker
+    public PlayerBod player
     {
         get
         {
-            if (stat_tracker_ == null)
-                stat_tracker_ = GameObject.FindObjectOfType<StatTracker>();
+            if (player_ == null)
+                player_ = GameObject.FindObjectOfType<PlayerBod>();
 
-            return stat_tracker_;
+            return player_;
         }
     }
 
 
-    private StatTracker stat_tracter_;
-    */
+    public CameraManager camera_manager
+    {
+        get
+        {
+            if (camera_manager_ == null)
+                camera_manager_ = GameObject.FindObjectOfType<CameraManager>();
+
+            return camera_manager_;
+        }
+    }
+
+
+    private PlayerBod player_;
+    private CameraManager camera_manager_;
+
 }
