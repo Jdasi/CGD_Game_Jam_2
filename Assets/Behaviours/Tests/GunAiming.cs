@@ -63,8 +63,8 @@ public class GunAiming : MonoBehaviour
 
     void HitScan()
     {
-        RaycastHit2D hit = Physics2D.Raycast(muzzle.position, -gun.transform.up, Mathf.Infinity, hit_layers);
-        Debug.DrawLine(muzzle.position, muzzle.position + (-gun.transform.up * 1000), Color.green, 3);
+        RaycastHit2D hit = Physics2D.Raycast(muzzle.position, gun.transform.right, Mathf.Infinity, hit_layers);
+        Debug.DrawLine(muzzle.position, muzzle.position + (gun.transform.right * 1000), Color.green, 3);
 
         if (hit.rigidbody == null)
             return;
