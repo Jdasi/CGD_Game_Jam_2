@@ -4,15 +4,11 @@ using UnityEngine;
 
 public class LevelManager : MonoBehaviour
 {
-    public GameObject assassination_target;
-
     public Camera main_cam;
     public Camera sniper_cam;
 
-    public Transform target_spawn_pos;
-    public Transform target_speech_pos;
     public GameObject player;
-    private GameObject target;
+    public GameObject target;
 
     public float level_timer;
     public float level_time_limit;
@@ -45,32 +41,39 @@ public class LevelManager : MonoBehaviour
         if (cinematic_played != false)
             return;
 
-        SpawnTarget();
+        EnableTarget();
         PlayCinematic();
     }
 
 
 
-    private void SpawnTarget()
+    private void EnableTarget()
     {
-        target = Instantiate(assassination_target, target_spawn_pos.position, transform.rotation);
-        target.GetComponent<TargetAI>().SetTarget(target_speech_pos.position);
+        if (target.activeInHierarchy)
+            return;
+        
+        target.gameObject.SetActive(true);
     }
 
 
 
     private void PlayCinematic()
     {
+        // Stops PlayerInPosition getting called more than once
         cinematic_played = true;
 
         sniper_cam.GetComponent<SniperCamera>().SetPosition();
 
+        // Switch Camera for Cinematic...
         sniper_cam.gameObject.SetActive(true);
         main_cam.gameObject.SetActive(false);
     }
 
 
 
+    // Switch Cameras...
+
+    // These get called by Triggers in the Level
     public void SetCameraMain()
     {
         main_cam.gameObject.SetActive(true);
