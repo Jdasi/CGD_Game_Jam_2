@@ -31,7 +31,7 @@ public class HookAiming : MonoBehaviour
         if (!Input.GetButtonDown("Fire2"))
             return;
 
-        Vector3 mouse_pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Vector3 mouse_pos = Camera.allCameras[0].ScreenToWorldPoint(Input.mousePosition);
         RaycastHit2D hit = Physics2D.Raycast(hand_rb.transform.position, mouse_pos - hand_rb.transform.position,
             grapple_distance, hit_layers);
 

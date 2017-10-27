@@ -78,6 +78,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc5703e65e8dc9f418babe7c262c1c89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cin_cam: {fileID: 0}
+  player: {fileID: 0}
   spawn_pos: {fileID: 0}
 --- !u!212 &212418068096189996
 SpriteRenderer:

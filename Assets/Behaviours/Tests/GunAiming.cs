@@ -7,8 +7,13 @@ public class GunAiming : MonoBehaviour
     [Header("Parameters")]
     [SerializeField] float aim_force = 10;
     [SerializeField] float recoil_force;
-    [SerializeField] float ejection_force;
     [SerializeField] float hit_force;
+
+    [Space]
+    [SerializeField] float ejection_force;
+    [SerializeField] float min_ejection_torque;
+    [SerializeField] float max_ejection_torque;
+
     [SerializeField] LayerMask hit_layers;
     [SerializeField] WheelchairControl wheelchair;
 
@@ -20,7 +25,7 @@ public class GunAiming : MonoBehaviour
     [SerializeField] Transform muzzle;
     [SerializeField] GameObject bullet_casing_prefab;
 
-    private Vector2 target_pos = new Vector2();
+    private Vector3 target_pos;
     private bool fire = false;
 
 
@@ -33,19 +38,26 @@ public class GunAiming : MonoBehaviour
         {
             // Recoil.
             gun.AddForce(gun.transform.up * recoil_force);
+            AudioManager.PlayOneShot("gun_shot");
 
             var particle = Instantiate(particle_effect);
             particle.transform.position = muzzle.position;
             particle.transform.rotation = muzzle.rotation;
-
-            AudioManager.PlayOneShot("gun_shot");
-
-            var casing_clone = Instantiate(bullet_casing_prefab, ejection_point.position, gun.transform.rotation);
-            casing_clone.GetComponent<Rigidbody2D>().AddForce(gun.transform.right * ejection_force);
-
             Destroy(particle, 5);
+
+            SpawnBulletCasing();
             HitScan();
         }
+    }
+
+
+    void SpawnBulletCasing()
+    {
+        var casing_clone = Instantiate(bullet_casing_prefab, ejection_point.position, gun.transform.rotation);
+        Rigidbody2D casing_body = casing_clone.GetComponent<Rigidbody2D>();
+
+        casing_body.AddForce(gun.transform.right * ejection_force);
+        casing_body.AddTorque(Random.Range(min_ejection_torque, max_ejection_torque));
     }
 
 
@@ -63,9 +75,9 @@ public class GunAiming : MonoBehaviour
     }
 
 
-	void FixedUpdate ()
+	void FixedUpdate()
     {
-        Vector3 gun_force = -target_pos.normalized * aim_force;
+        Vector3 gun_force = (target_pos - gun.transform.position).normalized * aim_force;
 		gun_aimer.AddForce(gun_force);
 
         if (wheelchair != null)
@@ -75,8 +87,13 @@ public class GunAiming : MonoBehaviour
 
     void UpdateTargetPos()
     {
-        Vector2 mousePos = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
-        target_pos = new Vector2(Screen.width * 0.5f, Screen.height * 0.5f) - mousePos;
+        target_pos = Camera.allCameras[0].ScreenToWorldPoint(Input.mousePosition);
+    }
+
+
+    void OnDrawGizmosSelected()
+    {
+        Gizmos.DrawSphere(target_pos, 1);
     }
 
 }

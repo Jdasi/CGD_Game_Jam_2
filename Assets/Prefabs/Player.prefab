@@ -1358,8 +1358,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   aim_force: 150
   recoil_force: 10000
-  ejection_force: 750
   hit_force: 4000
+  ejection_force: 750
+  min_ejection_torque: 10
+  max_ejection_torque: 40
   hit_layers:
     serializedVersion: 2
     m_Bits: 4294934527

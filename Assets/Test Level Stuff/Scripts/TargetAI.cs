@@ -35,6 +35,12 @@ public class TargetAI : MonoBehaviour
 
     private void MoveToTarget()
     {
+        if (transform.position == speech_pos)
+        {
+            at_target_pos = true;
+            return;
+        }
+
         transform.position = Vector3.MoveTowards(transform.position, speech_pos, Time.deltaTime);
     }
 

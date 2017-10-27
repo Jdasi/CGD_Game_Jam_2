@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class LevelManager : MonoBehaviour
 {
-    public Camera main_cam;
-    public Camera cinematic_cam;
-
     public GameObject assassination_target;
+
+    public Camera main_cam;
+    public Camera sniper_cam;
 
     public Transform target_spawn_pos;
     public Transform target_speech_pos;
@@ -17,7 +17,7 @@ public class LevelManager : MonoBehaviour
     public float level_timer;
     public float level_time_limit;
 
-    private bool playing_cinematic;
+    private bool cinematic_played;
 
     // Use this for initialization
     void Start()
@@ -42,9 +42,11 @@ public class LevelManager : MonoBehaviour
 
     public void PlayerInPosition()
     {
-        PlayCinematic();
+        if (cinematic_played != false)
+            return;
 
         SpawnTarget();
+        PlayCinematic();
     }
 
 
@@ -59,11 +61,31 @@ public class LevelManager : MonoBehaviour
 
     private void PlayCinematic()
     {
-        playing_cinematic = true;
-        main_cam.enabled = false;
-        cinematic_cam.enabled = true;
-        // STOPTIMER
-        Debug.Log("PlayingCinematic...");
+        cinematic_played = true;
+
+        sniper_cam.GetComponent<SniperCamera>().SetPosition();
+
+        sniper_cam.gameObject.SetActive(true);
+        main_cam.gameObject.SetActive(false);
+    }
+
+
+
+    public void SetCameraMain()
+    {
+        main_cam.gameObject.SetActive(true);
+        sniper_cam.gameObject.SetActive(false);
+    }
+
+
+
+    public void SetCameraSniper()
+    {
+        if (cinematic_played != true)
+            return;
+
+        sniper_cam.gameObject.SetActive(true);
+        main_cam.gameObject.SetActive(false);
     }
 }
 
