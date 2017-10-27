@@ -10,12 +10,16 @@ public class Bullet : MonoBehaviour
     private Vector3 dir;
     private float speed;
     private float force;
+    private RaycastHit2D expected_hit;
+    private float progress;
 
 
-    public void Init(Vector3 _dir, float _speed, float _force)
+    public void Init(Vector3 _dir, float _speed, float _force, RaycastHit2D _hit)
     {
         dir = _dir;
         speed = _speed;
+        force = _force;
+        expected_hit = _hit;
     }
 
 
@@ -27,18 +31,14 @@ public class Bullet : MonoBehaviour
 
     void Update()
     {
-        Vector3 prev_pos = transform.position;
+        progress += speed * Time.unscaledDeltaTime;
         transform.position += dir * speed * Time.unscaledDeltaTime;
-        Vector3 current_pos = transform.position;
 
-        Vector3 diff = (current_pos - prev_pos);
-        RaycastHit2D hit = Physics2D.Raycast(prev_pos, diff.normalized, diff.magnitude, hit_layers);
-
-        if (hit.rigidbody == null)
-            return;
-
-        hit.rigidbody.AddForce(dir * force);
-        Destroy(this.gameObject);
+        if (progress >= expected_hit.distance)
+        {
+            expected_hit.rigidbody.AddForce(dir * force);
+            Destroy(this.gameObject);
+        }
     }
 
 }
