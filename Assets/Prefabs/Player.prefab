@@ -290,6 +290,8 @@ GameObject:
   - component: {fileID: 4787363811954154}
   - component: {fileID: 114712879997974906}
   - component: {fileID: 114361311912166128}
+  - component: {fileID: 114646792812209384}
+  - component: {fileID: 114871297313403476}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -520,7 +522,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1773906681504676}
   m_LocalRotation: {x: -0, y: -0, z: 0.011287331, w: 0.99993634}
-  m_LocalPosition: {x: -2.53, y: 0.38, z: 0}
+  m_LocalPosition: {x: -2.43, y: -0.83, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4675632479057590}
@@ -1784,6 +1786,19 @@ MonoBehaviour:
     m_Bits: 1
   hook_line: {fileID: 120540017681500978}
   hand_rb: {fileID: 50155577423970872}
+--- !u!114 &114646792812209384
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1773906681504676}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ee25b769f7a1d644bf0dd1a480af6c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lower_bound: 0.35
+  upper_bound: 1
 --- !u!114 &114712879997974906
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1797,13 +1812,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   aim_force: 150
   recoil_force: 10000
-  hit_force: 4000
+  hit_force: 10000
   ejection_force: 750
-  min_ejection_torque: 0
-  max_ejection_torque: 0
+  min_ejection_torque: 10
+  max_ejection_torque: 40
+  bullet_speed: 5
   hit_layers:
     serializedVersion: 2
-    m_Bits: 4294934527
+    m_Bits: 131072
   wheelchair: {fileID: 0}
   gun_aimer: {fileID: 50319266040379688}
   gun: {fileID: 50725149769102920}
@@ -1813,6 +1829,20 @@ MonoBehaviour:
   muzzle: {fileID: 4819198224915388}
   bullet_casing_prefab: {fileID: 1250158307648726, guid: 681e58386dd556644ac3e1aa56c2479c,
     type: 2}
+  bullet_prefab: {fileID: 1734995962972692, guid: 481036236c4541c49895a5626bcc1511,
+    type: 2}
+--- !u!114 &114871297313403476
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1773906681504676}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 950fdb1678550ce4ea9c5b94d183e995, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bod: {fileID: 50034255177593382}
 --- !u!120 &120057430046622496
 LineRenderer:
   m_ObjectHideFlags: 1
