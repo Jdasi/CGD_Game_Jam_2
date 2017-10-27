@@ -4,28 +4,20 @@ using UnityEngine;
 
 public class TargetAI : MonoBehaviour
 {
-    public Transform spawn_pos;
-    private Vector3 speech_pos;
+    public Transform move_pos;
 
-    private bool at_target_pos;
+    public bool at_move_pos = false;
     private int health = 1;
-
-
-	// Use this for initialization
-	void Start ()
-    {
-        at_target_pos = false;
-	}
 	
 	// Update is called once per frame
 	void Update ()
     {
-        if (at_target_pos == false)
+        if (at_move_pos == false)
         {
-            MoveToTarget();
+            MoveToPosition();
         }
 
-        if (at_target_pos == true)
+        if (at_move_pos == true)
         {
             // Do Speech stuff
         }
@@ -33,21 +25,14 @@ public class TargetAI : MonoBehaviour
 
 
 
-    private void MoveToTarget()
+    private void MoveToPosition()
     {
-        if (transform.position == speech_pos)
+        if (transform.position == move_pos.position)
         {
-            at_target_pos = true;
+            at_move_pos = true;
             return;
         }
 
-        transform.position = Vector3.MoveTowards(transform.position, speech_pos, Time.deltaTime);
-    }
-
-
-
-    public void SetTarget(Vector3 _position)
-    {
-        speech_pos = _position;
+        transform.position = Vector3.MoveTowards(transform.position, move_pos.position, Time.deltaTime);
     }
 }
