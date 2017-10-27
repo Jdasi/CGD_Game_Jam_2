@@ -37,7 +37,7 @@ public class GunAiming : MonoBehaviour
         if (fire)
         {
             // Recoil.
-            gun.AddForce(gun.transform.up * recoil_force);
+            gun.AddForce(-gun.transform.right * recoil_force);
             AudioManager.PlayOneShot("gun_shot");
 
             var particle = Instantiate(particle_effect);
