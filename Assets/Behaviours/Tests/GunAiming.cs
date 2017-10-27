@@ -85,7 +85,7 @@ public class GunAiming : MonoBehaviour
             gun.transform.rotation);
 
         Bullet bullet = clone.GetComponent<Bullet>();
-        bullet.Init(gun.transform.right, bullet_speed, hit_force);
+        bullet.Init(gun.transform.right, bullet_speed, hit_force, _hit);
 
         SloMoManager.time_scale = 0.01f;
         cam.SetTarget(bullet.transform, 10);

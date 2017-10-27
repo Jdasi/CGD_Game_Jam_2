@@ -1812,7 +1812,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   aim_force: 150
   recoil_force: 10000
-  hit_force: 4000
+  hit_force: 10000
   ejection_force: 750
   min_ejection_torque: 10
   max_ejection_torque: 40
