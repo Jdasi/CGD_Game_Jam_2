@@ -23,10 +23,10 @@ TagManager:
   - wheel
   - Gun
   - Casing
-  - Ragdoll
+  - Targetable
   - Triggers
   - Bullet
-  - Windows
+  - Scuffable
   - Obstacle
   - 
   - 

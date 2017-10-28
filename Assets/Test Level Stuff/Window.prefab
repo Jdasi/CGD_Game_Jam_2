@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 212948225981223276}
   - component: {fileID: 61601907003867020}
   - component: {fileID: 114516879648423946}
+  - component: {fileID: 114220422528308828}
   m_Layer: 20
   m_Name: Window
   m_TagString: Untagged
@@ -36,7 +37,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1629345162476624}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -41.23, y: 6.79, z: 0}
+  m_LocalPosition: {x: 6.79, y: 1.18, z: 0}
   m_LocalScale: {x: 4, y: 6, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -67,6 +68,33 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.3, y: 2}
   m_EdgeRadius: 0
+--- !u!114 &114220422528308828
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1629345162476624}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03627222aad8c3e49bffd7f2f5b2d354, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scuff_events:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 114516879648423946}
+        m_MethodName: Break
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
 --- !u!114 &114516879648423946
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -80,6 +108,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   broken_window: {fileID: 1472155905527728, guid: aadc936edd1a79e4a82654cc25ec4c02,
     type: 2}
+  break_clip: {fileID: 8300000, guid: 4098c5b733c99d049957b416671af820, type: 3}
 --- !u!212 &212948225981223276
 SpriteRenderer:
   m_ObjectHideFlags: 1

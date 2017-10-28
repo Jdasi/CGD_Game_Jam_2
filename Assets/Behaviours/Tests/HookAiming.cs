@@ -50,7 +50,7 @@ public class HookAiming : MonoBehaviour
 
     void HandleHookRelease()
     {
-        if (!Input.GetButtonUp("Fire2"))
+        if (!hook_attached || !Input.GetButtonUp("Fire2"))
             return;
 
         hook_point = Vector3.zero;

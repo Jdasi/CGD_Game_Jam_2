@@ -43,6 +43,8 @@ public class SloMoManager : MonoBehaviour
     {
         Time.timeScale = Mathf.Lerp(Time.timeScale, time_scale,
             lerp_speed * Time.deltaTime);
+
+        Time.fixedDeltaTime = Time.timeScale * 0.02f;
     }
 
 }

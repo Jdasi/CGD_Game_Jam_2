@@ -5,14 +5,24 @@ using UnityEngine;
 public class DestructableWindow : MonoBehaviour
 {
     [SerializeField] GameObject broken_window;
+    [SerializeField] AudioClip break_clip;
 
-    private void OnTriggerEnter2D(Collider2D other)
+
+    public void Break()
     {
-        if(other.gameObject.tag == "Player")
-        {
-            Instantiate(broken_window, transform.position, broken_window.transform.rotation);
+        Instantiate(broken_window, transform.position, broken_window.transform.rotation);
+        AudioManager.PlayOneShot(break_clip);
 
-            Destroy(this.gameObject);
+        Destroy(this.gameObject);
+    }
+
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.tag == "Player")
+        {
+            Break();
         }
     }
+
 }

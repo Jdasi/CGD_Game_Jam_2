@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Runtime.InteropServices;
 using UnityEngine;
 
@@ -33,26 +34,78 @@ public class GunAiming : MonoBehaviour
     [SerializeField] GameObject bullet_prefab;
 
     private Vector3 target_pos;
-    private bool fire = false;
 
 
     void Update()
     {
         UpdateTargetPos();
-        fire = can_shoot && Input.GetButtonDown("Fire1");
 
-        if (fire)
+        if (can_shoot && Input.GetButtonDown("Fire1"))
+            ProcessShot();
+    }
+
+
+    void UpdateTargetPos()
+    {
+        target_pos = Camera.allCameras[0].ScreenToWorldPoint(Input.mousePosition);
+    }
+
+
+    void ProcessShot()
+    {
+        List<RaycastHit2D> hits = EvaluateValidGunHits(gun.transform.right, Color.green);
+        bool hit_body_exists = hits.Any(elem => elem.rigidbody != null);
+
+        if (hit_body_exists)
         {
-            if (!HitScan())
-            {
-                // Add recoil instantly.
-                AddRecoil();
-            }
+            RaycastHit2D hit = hits.Find(elem => elem.rigidbody != null);
+            SpawnBullet(hit); // BulletCamShot.
+        }
+        else
+        {
+            if (!AimAssistedShot())
+                InstantShot(hits);
+        }
 
-            SpawnParticle();
-            SpawnBulletCasing();
+        SpawnParticle();
+        SpawnBulletCasing();
 
-            AudioManager.PlayOneShot("gun_shot");
+        AudioManager.PlayOneShot("gun_shot");
+    }
+
+
+    // Returns true if the AimAssistedShot spawned a bullet, otherwise returns false.
+    bool AimAssistedShot()
+    {
+        var circle_cast = Physics2D.CircleCast(muzzle.position, scan_tolerance,
+        gun.transform.right, scan_distance, cast_hit_layers);
+
+        if (circle_cast.rigidbody == null)
+            return false;
+
+        // Try to hit with new ray.
+        Vector3 dir = ((Vector3)circle_cast.rigidbody.position - muzzle.position).normalized;
+        RaycastHit2D hit = EvaluateGunHit(dir, Color.yellow);
+
+        if (hit.rigidbody == null)
+            return false;
+
+        SpawnBullet(hit);
+
+        return true;
+    }
+
+
+    void InstantShot(List<RaycastHit2D> _hits)
+    {
+        AddRecoil();
+
+        foreach (RaycastHit2D hit in _hits)
+        {
+            Scuffable scuffable = hit.collider.GetComponent<Scuffable>();
+
+            if (scuffable != null)
+                scuffable.Scuff();
         }
     }
 
@@ -74,6 +127,13 @@ public class GunAiming : MonoBehaviour
     }
 
 
+    void SpawnBullet(RaycastHit2D _hit)
+    {
+        Debug.Log(_hit.rigidbody.name);
+        StartCoroutine(BulletCamSequence(_hit));
+    }
+
+
     void SpawnBulletCasing()
     {
         var casing_clone = Instantiate(bullet_casing_prefab, ejection_point.position, gun.transform.rotation);
@@ -84,80 +144,35 @@ public class GunAiming : MonoBehaviour
     }
 
 
-    bool HitScan()
+    RaycastHit2D EvaluateGunHit(Vector3 _dir, Color _color)
     {
-        bool hit_ragdoll = false;
-        // Try direct ray.
-        List<RaycastHit2D> ray = ShootRayFromGun(gun.transform.right, Color.green, ref hit_ragdoll);
-
-        for(int i = 0; i < ray.Count; i++)
-        {
-            if (ray[i].rigidbody == null)
-            {
-                /*
-                // Assit player with circle cast.
-                var cast = Physics2D.CircleCast(muzzle.position, scan_tolerance,
-                    gun.transform.right, scan_distance, cast_hit_layers);
-
-                if (cast.rigidbody == null)
-                    return false;
-
-                // Try to hit with new ray.
-                Vector3 dir = ((Vector3)cast.rigidbody.position - muzzle.position).normalized;
-                ray = ShootRayFromGun(dir, Color.yellow);
-
-                if (ray[i].rigidbody == null)
-                    return false;*/
-            }
-            //Debug.Log(ray[i].rigidbody.name);
-
-            if (hit_ragdoll == true)
-            {
-                StartCoroutine(BulletCamSequence(ray[i]));
-            }
-
-            else
-                ShootRound();
-        }
-
-        return true;
-    }
-
-
-    List<RaycastHit2D> ShootRayFromGun(Vector3 _dir, Color _color, ref bool _hit_ragdoll)
-    {
-        List<RaycastHit2D> hits = new List<RaycastHit2D>();
-        RaycastHit2D[] ray = Physics2D.RaycastAll(muzzle.position, _dir, scan_distance, ray_hit_layers);
+        RaycastHit2D hit = Physics2D.Raycast(muzzle.position, _dir, scan_distance, ray_hit_layers);
         Debug.DrawLine(muzzle.position, muzzle.position + (gun.transform.right * scan_distance), _color, 3);
 
-        for (int i = 0; i < ray.Length; i++)
-        {
-            Vector3 target = ray[i].point;
-            Vector3 dir_to_target = (target - muzzle.position).normalized;
-            float distance_to_target = Vector2.Distance(muzzle.position, target);
-
-            if (!Physics2D.Raycast(muzzle.position, dir_to_target, distance_to_target, ray_obstacle_layers))
-            {
-                Debug.Log("We can hit this target");
-                hits.Add(ray[i]);
-            }
-
-            // to enable Bullet cam, only if Ragdoll hit
-            if (ray[i].collider.gameObject.tag == "Ragdoll")
-            {
-                _hit_ragdoll = true;
-            }
-        }
-
-        return hits;
+        return hit;
     }
 
 
-
-    void ShootRound()
+    List<RaycastHit2D> EvaluateValidGunHits(Vector3 _dir, Color _color)
     {
-        var clone = Instantiate(bullet_prefab, muzzle.position,
-            gun.transform.rotation);
+        List<RaycastHit2D> valid_hits = new List<RaycastHit2D>();
+
+        RaycastHit2D[] hits = Physics2D.RaycastAll(muzzle.position, _dir, scan_distance, ray_hit_layers);
+        Debug.DrawLine(muzzle.position, muzzle.position + (gun.transform.right * scan_distance), _color, 3);
+
+        foreach (RaycastHit2D hit in hits)
+        {
+            Vector3 target = hit.point;
+            Vector3 dir = (target - muzzle.position).normalized;
+
+            if (Physics2D.Raycast(muzzle.position, dir, hit.distance, ray_obstacle_layers))
+                continue;
+
+            // Direct path to hit exists.
+            valid_hits.Add(hit);
+        }
+
+        return valid_hits;
     }
 
 
@@ -197,12 +212,6 @@ public class GunAiming : MonoBehaviour
 
         if (wheelchair != null)
             wheelchair.rigid_body.AddForce(-gun_force);
-    }
-
-
-    void UpdateTargetPos()
-    {
-        target_pos = Camera.allCameras[0].ScreenToWorldPoint(Input.mousePosition);
     }
 
 }

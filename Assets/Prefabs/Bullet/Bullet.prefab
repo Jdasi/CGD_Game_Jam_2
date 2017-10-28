@@ -194,10 +194,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
-  force: 5000
-  hit_layers:
+  force: 100000
+  scuffable_layer:
     serializedVersion: 2
-    m_Bits: 131072
+    m_Bits: 1048576
 --- !u!212 &212906129082012424
 SpriteRenderer:
   m_ObjectHideFlags: 1
