@@ -1,13 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 using UnityEngine;
 
 public class GunAiming : MonoBehaviour
 {
     [Header("Parameters")]
+    public bool can_shoot = true;
     [SerializeField] float aim_force = 10;
     [SerializeField] float recoil_force;
-    [SerializeField] float hit_force;
 
     [Space]
     [SerializeField] float ejection_force;
@@ -15,9 +16,10 @@ public class GunAiming : MonoBehaviour
     [SerializeField] float max_ejection_torque;
 
     [Space]
-    [SerializeField] float bullet_speed;
-
-    [SerializeField] LayerMask hit_layers;
+    [SerializeField] float scan_distance;
+    [SerializeField] float scan_tolerance;
+    [SerializeField] LayerMask ray_hit_layers;
+    [SerializeField] LayerMask cast_hit_layers;
     [SerializeField] WheelchairControl wheelchair;
 
     [Header("References")]
@@ -36,22 +38,38 @@ public class GunAiming : MonoBehaviour
     void Update()
     {
         UpdateTargetPos();
-        fire = Input.GetButtonDown("Fire1");
+        fire = can_shoot && Input.GetButtonDown("Fire1");
 
         if (fire)
         {
-            // Recoil.
-            gun.AddForce(-gun.transform.right * recoil_force);
-            AudioManager.PlayOneShot("gun_shot");
+            if (!HitScan())
+            {
+                // Add recoil instantly.
+                AddRecoil();
+            }
 
-            var particle = Instantiate(particle_effect);
-            particle.transform.position = muzzle.position;
-            particle.transform.rotation = Quaternion.LookRotation(gun.transform.right);
-            Destroy(particle, 5);
-
+            SpawnParticle();
             SpawnBulletCasing();
-            HitScan();
+
+            AudioManager.PlayOneShot("gun_shot");
         }
+    }
+
+
+    void AddRecoil()
+    {
+        gun.AddForce(-gun.transform.right * recoil_force);
+    }
+
+
+    void SpawnParticle()
+    {
+        var particle = Instantiate(particle_effect);
+
+        particle.transform.position = muzzle.position;
+        particle.transform.rotation = Quaternion.LookRotation(gun.transform.right);
+
+        Destroy(particle, 5);
     }
 
 
@@ -65,40 +83,70 @@ public class GunAiming : MonoBehaviour
     }
 
 
-    void HitScan()
+    bool HitScan()
     {
-        RaycastHit2D hit = Physics2D.Raycast(muzzle.position, gun.transform.right, Mathf.Infinity, hit_layers);
-        Debug.DrawLine(muzzle.position, muzzle.position + (gun.transform.right * 1000), Color.green, 3);
+        // Try direct ray.
+        var ray = ShootRayFromGun(gun.transform.right, Color.green);
 
-        if (hit.rigidbody == null)
-            return;
+        if (ray.rigidbody == null)
+        {
+            // Assit player with circle cast.
+            var cast = Physics2D.CircleCast(muzzle.position, scan_tolerance,
+                gun.transform.right, scan_distance, cast_hit_layers);
 
-        Debug.Log(hit.rigidbody.name);
-        StartCoroutine(BulletCamSequence(hit));
+            if (cast.rigidbody == null)
+                return false;
+
+            // Try to hit with new ray.
+            Vector3 dir = ((Vector3)cast.rigidbody.position - muzzle.position).normalized;
+            ray = ShootRayFromGun(dir, Color.yellow);
+
+            if (ray.rigidbody == null)
+                return false;
+        }
+
+        Debug.Log(ray.rigidbody.name);
+        StartCoroutine(BulletCamSequence(ray));
+
+        return true;
+    }
+
+
+    RaycastHit2D ShootRayFromGun(Vector3 _dir, Color _color)
+    {
+        var ray = Physics2D.Raycast(muzzle.position, _dir, scan_distance, ray_hit_layers);
+        Debug.DrawLine(muzzle.position, muzzle.position + (gun.transform.right * scan_distance), _color, 3);
+
+        return ray;
     }
 
 
     IEnumerator BulletCamSequence(RaycastHit2D _hit)
     {
         CameraManager cam = GameManager.scene.camera_manager;
+        CameraSettings cam_settings = GameManager.scene.camera_manager.GetSettings();
+
         var clone = Instantiate(bullet_prefab, muzzle.position,
             gun.transform.rotation);
 
         Bullet bullet = clone.GetComponent<Bullet>();
-        bullet.Init(gun.transform.right, bullet_speed, hit_force, _hit);
+        bullet.Init((Vector3)_hit.point - muzzle.position, _hit);
 
-        SloMoManager.time_scale = 0.01f;
+        SloMoManager.bullet_time = true;
+        can_shoot = false;
+
         cam.SetTarget(bullet.transform, 10);
         cam.update_mode = CameraUpdateMode.DELTA;
 
-        yield return new WaitUntil(() => bullet == null);
+        yield return new WaitUntil(() => bullet.trajectory_complete);
 
-        SloMoManager.time_scale = 1;
+        SloMoManager.bullet_time = false;
+        AddRecoil();
 
         yield return new WaitForSeconds(1);
 
-        cam.SetTarget(GameManager.scene.player.bod.transform, cam.original_zoom);
-        cam.update_mode = CameraUpdateMode.FIXED_DELTA;
+        cam.SetSettings(cam_settings);
+        can_shoot = true;
     }
 
 

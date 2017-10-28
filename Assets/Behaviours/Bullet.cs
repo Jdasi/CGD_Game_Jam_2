@@ -4,21 +4,21 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
+    public bool trajectory_complete { get; private set; }
+
     [Header("Parameters")]
+    [SerializeField] float speed;
+    [SerializeField] float force;
     [SerializeField] LayerMask hit_layers;
 
     private Vector3 dir;
-    private float speed;
-    private float force;
     private RaycastHit2D expected_hit;
     private float progress;
 
 
-    public void Init(Vector3 _dir, float _speed, float _force, RaycastHit2D _hit)
+    public void Init(Vector3 _dir, RaycastHit2D _hit)
     {
-        dir = _dir;
-        speed = _speed;
-        force = _force;
+        dir = _dir.normalized;
         expected_hit = _hit;
     }
 
@@ -37,6 +37,8 @@ public class Bullet : MonoBehaviour
         if (progress >= expected_hit.distance)
         {
             expected_hit.rigidbody.AddForce(dir * force);
+            trajectory_complete = true;
+
             Destroy(this.gameObject);
         }
     }

@@ -350,7 +350,7 @@ GameObject:
   - component: {fileID: 233902291511538128}
   - component: {fileID: 60607139821533626}
   m_Layer: 13
-  m_Name: Circle
+  m_Name: head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -444,7 +444,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1715298655736200}
   m_LocalRotation: {x: -0, y: -0, z: 0.70710677, w: 0.7071068}
-  m_LocalPosition: {x: 6.808, y: 0.44, z: 3.2705078}
+  m_LocalPosition: {x: 6.873, y: 0.283, z: 3.2705078}
   m_LocalScale: {x: 0.35468, y: 0.3611559, z: 1}
   m_Children: []
   m_Father: {fileID: 4787363811954154}
@@ -563,7 +563,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1010562911655888}
   m_LocalRotation: {x: 0.0079813, y: 0.7070617, z: -0.7070618, w: -0.007981316}
-  m_LocalPosition: {x: 3.41, y: 0.31, z: -0.0005083084}
+  m_LocalPosition: {x: 3.409, y: 0.272, z: -0.001}
   m_LocalScale: {x: 2.841485, y: 1, z: 0.28229776}
   m_Children: []
   m_Father: {fileID: 4479072820143548}
@@ -1810,14 +1810,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2963ffa1ed076c647972eb6cb685ec43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  can_shoot: 1
   aim_force: 150
   recoil_force: 10000
-  hit_force: 10000
   ejection_force: 750
   min_ejection_torque: 10
   max_ejection_torque: 40
-  bullet_speed: 5
-  hit_layers:
+  scan_distance: 120
+  scan_tolerance: 2
+  ray_hit_layers:
+    serializedVersion: 2
+    m_Bits: 131073
+  cast_hit_layers:
     serializedVersion: 2
     m_Bits: 131072
   wheelchair: {fileID: 0}
@@ -1876,8 +1880,8 @@ LineRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Positions:
-  - {x: 2.55, y: 0.3, z: 0}
-  - {x: 176.43, y: 0.3, z: 1}
+  - {x: 3.36, y: 0.27, z: 0}
+  - {x: 200, y: 0.27, z: 1}
   m_Parameters:
     serializedVersion: 2
     widthMultiplier: 0.08
@@ -2604,7 +2608,7 @@ HingeJoint2D:
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 0
   m_Anchor: {x: -0.0000001834246, y: 0.50000036}
-  m_ConnectedAnchor: {x: 3.0710828, y: 0.40651938}
+  m_ConnectedAnchor: {x: 3.3572736, y: 0.2617783}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0

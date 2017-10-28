@@ -8,6 +8,14 @@ public enum CameraUpdateMode
     FIXED_DELTA
 }
 
+public struct CameraSettings
+{
+    public Transform target;
+    public Vector3 target_pos;
+    public float target_zoom;
+    public CameraUpdateMode update_mode;
+}
+
 public class CameraManager : MonoBehaviour
 {
     [HideInInspector] public float original_zoom;
@@ -24,6 +32,34 @@ public class CameraManager : MonoBehaviour
 
     private Vector3 target_pos;
     private float target_zoom;
+
+
+    public CameraSettings GetSettings()
+    {
+        CameraSettings settings = new CameraSettings();
+        
+        settings.target = target;
+        settings.target_pos = target_pos;
+        settings.target_zoom = target_zoom;
+        settings.update_mode = update_mode;
+
+        return settings;
+    }
+
+
+    public void SetSettings(CameraSettings _settings)
+    {
+        if (_settings.target != null)
+        {
+            SetTarget(_settings.target, _settings.target_zoom);
+        }
+        else
+        {
+            SetTarget(_settings.target_pos, target_zoom);
+        }
+
+        update_mode = _settings.update_mode;
+    }
 
 
     public void SetTarget(Transform _target, float _zoom)
@@ -68,6 +104,17 @@ public class CameraManager : MonoBehaviour
 
         if (update_mode == CameraUpdateMode.DELTA)
             UpdatePosition();
+    }
+
+
+    void LateUpdate()
+    {
+        Vector3 pos = transform.position;
+
+        if (pos.z != offset.z)
+            pos.z = offset.z;
+
+        transform.position = pos;
     }
 
     

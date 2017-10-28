@@ -4,11 +4,18 @@ using UnityEngine;
 
 public class SloMoManager : MonoBehaviour
 {
+    public static bool bullet_time
+    {
+        get { return time_scale == BULLET_TIME_SCALE; }
+        set { time_scale = value ? BULLET_TIME_SCALE : 1; }
+    }
+
     public static float time_scale;
 
     [SerializeField] float lerp_speed = 10;
 
     private static SloMoManager instance;
+    private const float BULLET_TIME_SCALE = 0.01f;
     
 
     void Awake()

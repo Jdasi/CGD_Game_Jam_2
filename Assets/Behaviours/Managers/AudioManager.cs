@@ -93,6 +93,12 @@ public class AudioManager : MonoBehaviour
     }
 
 
+    void Update()
+    {
+        sfx_source.pitch = Time.timeScale;
+    }
+
+
     void LateUpdate()
     {
         last_clip_played = null;
