@@ -3,7 +3,8 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Ragdoll
   layers:
   - Default
   - TransparentFX
@@ -25,8 +26,8 @@ TagManager:
   - Ragdoll
   - Triggers
   - Bullet
-  - 
-  - 
+  - Windows
+  - Obstacle
   - 
   - 
   - 

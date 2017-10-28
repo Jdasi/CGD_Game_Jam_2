@@ -12,7 +12,7 @@ public class DestructableWindow : MonoBehaviour
         {
             Instantiate(broken_window, transform.position, broken_window.transform.rotation);
 
-            ; Destroy(this.gameObject);
+            Destroy(this.gameObject);
         }
     }
 }

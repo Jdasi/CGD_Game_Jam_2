@@ -19,6 +19,7 @@ public class GunAiming : MonoBehaviour
     [SerializeField] float scan_distance;
     [SerializeField] float scan_tolerance;
     [SerializeField] LayerMask ray_hit_layers;
+    [SerializeField] LayerMask ray_obstacle_layers;
     [SerializeField] LayerMask cast_hit_layers;
     [SerializeField] WheelchairControl wheelchair;
 
@@ -85,39 +86,78 @@ public class GunAiming : MonoBehaviour
 
     bool HitScan()
     {
+        bool hit_ragdoll = false;
         // Try direct ray.
-        var ray = ShootRayFromGun(gun.transform.right, Color.green);
+        List<RaycastHit2D> ray = ShootRayFromGun(gun.transform.right, Color.green, ref hit_ragdoll);
 
-        if (ray.rigidbody == null)
+        for(int i = 0; i < ray.Count; i++)
         {
-            // Assit player with circle cast.
-            var cast = Physics2D.CircleCast(muzzle.position, scan_tolerance,
-                gun.transform.right, scan_distance, cast_hit_layers);
+            if (ray[i].rigidbody == null)
+            {
+                /*
+                // Assit player with circle cast.
+                var cast = Physics2D.CircleCast(muzzle.position, scan_tolerance,
+                    gun.transform.right, scan_distance, cast_hit_layers);
 
-            if (cast.rigidbody == null)
-                return false;
+                if (cast.rigidbody == null)
+                    return false;
 
-            // Try to hit with new ray.
-            Vector3 dir = ((Vector3)cast.rigidbody.position - muzzle.position).normalized;
-            ray = ShootRayFromGun(dir, Color.yellow);
+                // Try to hit with new ray.
+                Vector3 dir = ((Vector3)cast.rigidbody.position - muzzle.position).normalized;
+                ray = ShootRayFromGun(dir, Color.yellow);
 
-            if (ray.rigidbody == null)
-                return false;
+                if (ray[i].rigidbody == null)
+                    return false;*/
+            }
+            //Debug.Log(ray[i].rigidbody.name);
+
+            if (hit_ragdoll == true)
+            {
+                StartCoroutine(BulletCamSequence(ray[i]));
+            }
+
+            else
+                ShootRound();
         }
-
-        Debug.Log(ray.rigidbody.name);
-        StartCoroutine(BulletCamSequence(ray));
 
         return true;
     }
 
 
-    RaycastHit2D ShootRayFromGun(Vector3 _dir, Color _color)
+    List<RaycastHit2D> ShootRayFromGun(Vector3 _dir, Color _color, ref bool _hit_ragdoll)
     {
-        var ray = Physics2D.Raycast(muzzle.position, _dir, scan_distance, ray_hit_layers);
+        List<RaycastHit2D> hits = new List<RaycastHit2D>();
+        RaycastHit2D[] ray = Physics2D.RaycastAll(muzzle.position, _dir, scan_distance, ray_hit_layers);
         Debug.DrawLine(muzzle.position, muzzle.position + (gun.transform.right * scan_distance), _color, 3);
 
-        return ray;
+        for (int i = 0; i < ray.Length; i++)
+        {
+            Vector3 target = ray[i].point;
+            Vector3 dir_to_target = (target - muzzle.position).normalized;
+            float distance_to_target = Vector2.Distance(muzzle.position, target);
+
+            if (!Physics2D.Raycast(muzzle.position, dir_to_target, distance_to_target, ray_obstacle_layers))
+            {
+                Debug.Log("We can hit this target");
+                hits.Add(ray[i]);
+            }
+
+            // to enable Bullet cam, only if Ragdoll hit
+            if (ray[i].collider.gameObject.tag == "Ragdoll")
+            {
+                _hit_ragdoll = true;
+            }
+        }
+
+        return hits;
+    }
+
+
+
+    void ShootRound()
+    {
+        var clone = Instantiate(bullet_prefab, muzzle.position,
+            gun.transform.rotation);
     }
 
 

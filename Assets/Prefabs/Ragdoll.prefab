@@ -40,7 +40,7 @@ GameObject:
   - component: {fileID: 4735437044204686}
   m_Layer: 17
   m_Name: Ragdoll
-  m_TagString: Untagged
+  m_TagString: Ragdoll
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
