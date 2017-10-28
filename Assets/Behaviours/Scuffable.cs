@@ -5,12 +5,12 @@ using UnityEngine.Events;
 
 public class Scuffable : MonoBehaviour
 {
-    [SerializeField] UnityEvent scuff_events;
+    [SerializeField] CustomEvents.Vector3Event scuff_events;
 
 
-    public void Scuff()
+    public void Scuff(Vector3 _scuff_point)
     {
-        scuff_events.Invoke();
+        scuff_events.Invoke(_scuff_point);
     }
 
 }

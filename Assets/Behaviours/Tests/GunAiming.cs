@@ -105,7 +105,7 @@ public class GunAiming : MonoBehaviour
             Scuffable scuffable = hit.collider.GetComponent<Scuffable>();
 
             if (scuffable != null)
-                scuffable.Scuff();
+                scuffable.Scuff(hit.point);
         }
     }
 
