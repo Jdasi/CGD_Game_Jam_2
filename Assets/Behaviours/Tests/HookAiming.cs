@@ -28,7 +28,7 @@ public class HookAiming : MonoBehaviour
 
     void HandleHookFire()
     {
-        if (!Input.GetButtonDown("Fire2"))
+        if (SloMoManager.bullet_time || !Input.GetButtonDown("Fire2"))
             return;
 
         Vector3 mouse_pos = Camera.allCameras[0].ScreenToWorldPoint(Input.mousePosition);
@@ -42,6 +42,8 @@ public class HookAiming : MonoBehaviour
 
             hook_line.positionCount = 2;
             hook_line.SetPosition(1, hit.point);
+
+            AudioManager.PlayOneShot("hook_connect");
         }
     }
 
@@ -55,6 +57,8 @@ public class HookAiming : MonoBehaviour
         hook_attached = false;
 
         hook_line.positionCount = 0;
+
+        AudioManager.PlayOneShot("hook_release");
     }
 
 
