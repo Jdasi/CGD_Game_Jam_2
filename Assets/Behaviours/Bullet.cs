@@ -13,7 +13,6 @@ public class Bullet : MonoBehaviour
 
     private Vector3 dir;
     private RaycastHit2D expected_hit;
-    private float progress;
     private List<Scuffable> things_scuffed = new List<Scuffable>();
 
 
@@ -34,16 +33,21 @@ public class Bullet : MonoBehaviour
     {
         Vector3 prev_pos = transform.position;
 
-        progress += speed * Time.unscaledDeltaTime;
+        dir = ((Vector3)expected_hit.rigidbody.position - transform.position).normalized;
         transform.position += dir * speed * Time.unscaledDeltaTime;
+        transform.rotation = Quaternion.LookRotation(dir);
 
         Vector3 current_pos = transform.position;
 
         ScuffCheck(prev_pos, current_pos);
 
-        if (progress >= expected_hit.distance)
+        if (Vector3.Distance(transform.position,
+            expected_hit.rigidbody.position) < 0.5f)
         {
-            expected_hit.rigidbody.AddForce(dir * force);
+            TargetableBody targetable = expected_hit.rigidbody.GetComponent<TargetableBody>();
+            if (targetable != null)
+                targetable.Hit(new BulletImpact(transform.position, dir));
+
             trajectory_complete = true;
 
             Destroy(this.gameObject);
@@ -64,7 +68,7 @@ public class Bullet : MonoBehaviour
         if (scuffable == null || things_scuffed.Contains(scuffable))
             return;
 
-        scuffable.Scuff(hit.point);
+        scuffable.Scuff(new BulletImpact(hit.point, diff));
         things_scuffed.Add(scuffable);
     }
 
