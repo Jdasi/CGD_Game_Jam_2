@@ -51,9 +51,9 @@ public class ExplosiveBarrel : MonoBehaviour
     }
 
     // Using for testing Detection Radius
-    /*private void OnDrawGizmos()
+    private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawSphere(transform.position, explosion_hit_check_range);
-    }*/
+        Gizmos.DrawWireSphere(transform.position, explosion_hit_check_range);
+    }
 }
