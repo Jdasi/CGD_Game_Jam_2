@@ -46,7 +46,7 @@ public class Bullet : MonoBehaviour
         {
             TargetableBody targetable = expected_hit.rigidbody.GetComponent<TargetableBody>();
             if (targetable != null)
-                targetable.Hit(new BulletImpact(transform.position, dir));
+                targetable.Hit(new BulletImpact(transform.position, dir, expected_hit.rigidbody));
 
             trajectory_complete = true;
 
