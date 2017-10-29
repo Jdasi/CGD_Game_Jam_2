@@ -64,7 +64,7 @@ public class Bullet : MonoBehaviour
         if (scuffable == null || things_scuffed.Contains(scuffable))
             return;
 
-        scuffable.Scuff(hit.point);
+        scuffable.Scuff(new BulletImpact(hit.point, diff));
         things_scuffed.Add(scuffable);
     }
 

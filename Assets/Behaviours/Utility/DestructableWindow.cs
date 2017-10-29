@@ -22,10 +22,10 @@ public class DestructableWindow : MonoBehaviour
     }
 
 
-    public void BreakShot(Vector3 _explosion_point)
+    public void BreakShot(BulletImpact _impact)
     {
         Instantiate(broken_window, transform.position, broken_window.transform.rotation);
-        Instantiate(force_explosion, _explosion_point, force_explosion.transform.rotation);
+        Instantiate(force_explosion, _impact.pos, force_explosion.transform.rotation);
 
         AudioManager.PlayOneShot(break_clip);
 

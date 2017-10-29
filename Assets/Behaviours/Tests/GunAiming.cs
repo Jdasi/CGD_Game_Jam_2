@@ -78,19 +78,18 @@ public class GunAiming : MonoBehaviour
     bool AimAssistedShot()
     {
         var circle_cast = Physics2D.CircleCast(muzzle.position, scan_tolerance,
-        gun.transform.right, scan_distance, cast_hit_layers);
+            gun.transform.right, scan_distance, cast_hit_layers);
 
-        if (circle_cast.rigidbody == null)
+        if (circle_cast.rigidbody == null ||
+            Physics2D.Raycast(muzzle.position, gun.transform.right, circle_cast.distance, ray_obstacle_layers))
+        {
             return false;
+        }
 
-        // Try to hit with new ray.
-        Vector3 dir = ((Vector3)circle_cast.rigidbody.position - muzzle.position).normalized;
-        RaycastHit2D hit = EvaluateGunHit(dir, Color.yellow);
+        Debug.DrawLine(muzzle.position, muzzle.position + (gun.transform.right * scan_distance), Color.yellow, 3);
+        Debug.Log(circle_cast.collider);
 
-        if (hit.rigidbody == null)
-            return false;
-
-        SpawnBullet(hit);
+        SpawnBullet(circle_cast);
 
         return true;
     }
@@ -105,7 +104,7 @@ public class GunAiming : MonoBehaviour
             Scuffable scuffable = hit.collider.GetComponent<Scuffable>();
 
             if (scuffable != null)
-                scuffable.Scuff(hit.point);
+                scuffable.Scuff(new BulletImpact(hit.point, gun.transform.right));
         }
     }
 
