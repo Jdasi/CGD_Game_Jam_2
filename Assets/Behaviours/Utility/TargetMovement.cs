@@ -2,12 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TargetAI : MonoBehaviour
+public class TargetMovement : MonoBehaviour
 {
     public Transform move_pos;
 
-    public bool at_move_pos = false;
-    private int health = 1;
+    private bool at_move_pos = false;
 	
 	// Update is called once per frame
 	void Update ()

@@ -8,6 +8,7 @@ public class LevelManager : MonoBehaviour
     [SerializeField] float level_time_limit;
 
     public float level_timer;
+    private bool target_dead;
 
 
     void Start()
@@ -19,11 +20,21 @@ public class LevelManager : MonoBehaviour
 
     void Update()
     {
-        float prev_timer = level_timer;
-        level_timer += Time.deltaTime;
+        CheckTimer();
 
+        if (target_dead)
+            Debug.Log("Target Dead");
+    }
+
+
+    void CheckTimer()
+    {
+        level_timer += Time.deltaTime;
+        float prev_timer = level_timer;
+
+        // If the player has Run out of time! GAMEOVER
         if (level_timer >= level_time_limit &&
-            prev_timer < level_time_limit)
+                prev_timer < level_time_limit)
         {
             // Game Over!
             Debug.Log("MISSION FAILED");
@@ -50,5 +61,10 @@ public class LevelManager : MonoBehaviour
         Gizmos.DrawSphere(sniper_cam_goto, 1);
     }
 
+
+    public void TargetKilled()
+    {
+        target_dead = true;
+    }
 }
 
