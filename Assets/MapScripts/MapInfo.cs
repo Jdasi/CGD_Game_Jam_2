@@ -20,7 +20,7 @@ public class MapInfo : MonoBehaviour {
 	// Use this for initialization
 	void Start ()
     {
-        gannonAlive = true;
+        gannonAlive = false;
         ducharmeAlive = true;
         nabeemAlive = true;
 
