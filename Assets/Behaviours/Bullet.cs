@@ -13,7 +13,6 @@ public class Bullet : MonoBehaviour
 
     private Vector3 dir;
     private RaycastHit2D expected_hit;
-    private float progress;
     private List<Scuffable> things_scuffed = new List<Scuffable>();
 
 
@@ -34,14 +33,16 @@ public class Bullet : MonoBehaviour
     {
         Vector3 prev_pos = transform.position;
 
-        progress += speed * Time.unscaledDeltaTime;
+        dir = ((Vector3)expected_hit.rigidbody.position - transform.position).normalized;
         transform.position += dir * speed * Time.unscaledDeltaTime;
+        transform.rotation = Quaternion.LookRotation(dir);
 
         Vector3 current_pos = transform.position;
 
         ScuffCheck(prev_pos, current_pos);
 
-        if (progress >= expected_hit.distance)
+        if (Vector3.Distance(transform.position,
+            expected_hit.rigidbody.position) < 0.5f)
         {
             expected_hit.rigidbody.AddForce(dir * force);
             trajectory_complete = true;
