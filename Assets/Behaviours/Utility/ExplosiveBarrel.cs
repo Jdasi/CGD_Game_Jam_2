@@ -10,7 +10,7 @@ public class ExplosiveBarrel : MonoBehaviour
 
     public void Explode()
     {
-        Instantiate(exploded_barrel, transform.position, exploded_barrel.transform.rotation);
+        Instantiate(exploded_barrel, transform.position, transform.rotation);
 
         AudioManager.PlayOneShot(explosion);
 
