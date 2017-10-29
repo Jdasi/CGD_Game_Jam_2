@@ -4,37 +4,40 @@ using UnityEngine;
 
 public class DestructableWindow : MonoBehaviour
 {
-    [SerializeField] GameObject broken_window;
+    [SerializeField] GameObject[] broken_windows;
     [SerializeField] GameObject force_explosion;
     [SerializeField] AudioClip break_clip;
+
+    private bool fired;
 
 
     public void Break()
     {
-        Instantiate(broken_window, transform.position, broken_window.transform.rotation);
+        fired = true;
+
+        GameObject prefab = broken_windows[Random.Range(0, broken_windows.Length)];
+        Instantiate(prefab, transform.position, prefab.transform.rotation);
+
         AudioManager.PlayOneShot(break_clip);
 
         Destroy(this.gameObject);
     }
 
 
-    public void BreakShot(Vector3 _explosion_point)
+    public void BreakShot(BulletImpact _impact)
     {
-        var br_window = Instantiate(broken_window, transform.position, broken_window.transform.rotation);
-        var explosion = Instantiate(force_explosion, _explosion_point, force_explosion.transform.rotation);
-        //explosion.transform.SetParent(br_window.transform);
+        Instantiate(force_explosion, _impact.pos, force_explosion.transform.rotation);
 
-        AudioManager.PlayOneShot(break_clip);
-
-        Destroy(this.gameObject);
+        Break();
     }
 
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.tag == "Player")
+        if (other.CompareTag("Player") || other.CompareTag("Ragdoll"))
         {
-            Break();
+            if (!fired)
+                Break();
         }
     }
 

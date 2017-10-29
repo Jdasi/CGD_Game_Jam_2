@@ -5,12 +5,12 @@ using UnityEngine.Events;
 
 public class TargetableBody : MonoBehaviour
 {
-    [SerializeField] UnityEvent hit_events;
+    [SerializeField] CustomEvents.BulletImpactEvent hit_events;
 
 
-    public void Hit()
+    public void Hit(BulletImpact _impact)
     {
-        hit_events.Invoke();
+        hit_events.Invoke(_impact);
     }
 
 }
