@@ -55,7 +55,7 @@ public class CameraManager : MonoBehaviour
         }
         else
         {
-            SetTarget(_settings.target_pos, target_zoom);
+            SetTarget(_settings.target_pos, _settings.target_zoom);
         }
 
         update_mode = _settings.update_mode;
