@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DestructableWindow : MonoBehaviour
 {
-    [SerializeField] GameObject broken_window;
+    [SerializeField] GameObject[] broken_windows;
     [SerializeField] GameObject force_explosion;
     [SerializeField] AudioClip break_clip;
 
@@ -15,7 +15,9 @@ public class DestructableWindow : MonoBehaviour
     {
         fired = true;
 
-        Instantiate(broken_window, transform.position, broken_window.transform.rotation);
+        GameObject prefab = broken_windows[Random.Range(0, broken_windows.Length)];
+        Instantiate(prefab, transform.position, prefab.transform.rotation);
+
         AudioManager.PlayOneShot(break_clip);
 
         Destroy(this.gameObject);
@@ -24,21 +26,18 @@ public class DestructableWindow : MonoBehaviour
 
     public void BreakShot(BulletImpact _impact)
     {
-        Instantiate(broken_window, transform.position, broken_window.transform.rotation);
         Instantiate(force_explosion, _impact.pos, force_explosion.transform.rotation);
 
-        AudioManager.PlayOneShot(break_clip);
-
-        Destroy(this.gameObject);
+        Break();
     }
 
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.tag == "Player")
+        if (other.CompareTag("Player") || other.CompareTag("Ragdoll"))
         {
-            if(!fired)
-            Break();
+            if (!fired)
+                Break();
         }
     }
 

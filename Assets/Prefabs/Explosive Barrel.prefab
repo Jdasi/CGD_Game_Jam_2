@@ -21,9 +21,10 @@ GameObject:
   - component: {fileID: 4597722281062312}
   - component: {fileID: 212564010483201696}
   - component: {fileID: 61028219350045578}
-  - component: {fileID: 114613707732603354}
   - component: {fileID: 114575945961723998}
-  m_Layer: 20
+  - component: {fileID: 50024680803535138}
+  - component: {fileID: 114094997494690826}
+  m_Layer: 17
   m_Name: Explosive Barrel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -37,12 +38,32 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1934345180877504}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 50.93, y: 12.99, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 1}
+  m_LocalPosition: {x: -30.8, y: -0.5, z: 0}
+  m_LocalScale: {x: 2.609129, y: 2.609129, z: 1.3045645}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!50 &50024680803535138
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1934345180877504}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!61 &61028219350045578
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -68,7 +89,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.93, y: 1.8200002}
   m_EdgeRadius: 0
---- !u!114 &114575945961723998
+--- !u!114 &114094997494690826
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -76,23 +97,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1934345180877504}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f46753028d56b6d4286dfd2de05e9a2c, type: 3}
+  m_Script: {fileID: 11500000, guid: bc689ad22ab2cbe42aa6853f55d4ebf1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  exploded_barrel: {fileID: 1673441631886150, guid: 1a368deb6cec32a4a961371344e5cdb5,
-    type: 2}
---- !u!114 &114613707732603354
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1934345180877504}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 03627222aad8c3e49bffd7f2f5b2d354, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  scuff_events:
+  hit_events:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 114575945961723998}
@@ -106,8 +114,22 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_TypeName: CustomEvents+Vector3Event, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
+    m_TypeName: CustomEvents+BulletImpactEvent, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+--- !u!114 &114575945961723998
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1934345180877504}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f46753028d56b6d4286dfd2de05e9a2c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  exploded_barrel: {fileID: 1673441631886150, guid: 1a368deb6cec32a4a961371344e5cdb5,
+    type: 2}
+  explosion: {fileID: 0}
 --- !u!212 &212564010483201696
 SpriteRenderer:
   m_ObjectHideFlags: 1

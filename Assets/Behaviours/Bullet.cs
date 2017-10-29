@@ -44,7 +44,10 @@ public class Bullet : MonoBehaviour
         if (Vector3.Distance(transform.position,
             expected_hit.rigidbody.position) < 0.5f)
         {
-            expected_hit.rigidbody.AddForce(dir * force);
+            TargetableBody targetable = expected_hit.rigidbody.GetComponent<TargetableBody>();
+            if (targetable != null)
+                targetable.Hit(new BulletImpact(transform.position, dir));
+
             trajectory_complete = true;
 
             Destroy(this.gameObject);
