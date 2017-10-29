@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Ragdoll
+  - Barrel
   layers:
   - Default
   - TransparentFX

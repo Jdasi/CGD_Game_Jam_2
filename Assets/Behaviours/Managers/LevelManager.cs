@@ -6,9 +6,11 @@ public class LevelManager : MonoBehaviour
 {
     [SerializeField] Vector3 sniper_cam_goto;
     [SerializeField] float level_time_limit;
+    [SerializeField] float final_killcam_delay = 3.0f;
 
     public float level_timer;
     private bool target_dead;
+
 
 
     void Start()
@@ -23,7 +25,7 @@ public class LevelManager : MonoBehaviour
         CheckTimer();
 
         if (target_dead)
-            Debug.Log("Target Dead");
+            StartCoroutine(EndLevel(final_killcam_delay));
     }
 
 
@@ -62,9 +64,18 @@ public class LevelManager : MonoBehaviour
     }
 
 
+    // Called By the Target
     public void TargetKilled()
     {
         target_dead = true;
+    }
+
+    
+    IEnumerator EndLevel(float _delay)
+    {
+        yield return new WaitForSeconds(_delay);
+
+        Debug.Log("Target Dead, End Level");
     }
 }
 
