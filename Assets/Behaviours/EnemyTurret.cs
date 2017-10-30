@@ -37,6 +37,8 @@ public class EnemyTurret : MonoBehaviour
 
         turret_base.gameObject.layer = 0;
         turret_barrel.gameObject.layer = 0;
+
+        laser_line.enabled = false;
     }
 
     

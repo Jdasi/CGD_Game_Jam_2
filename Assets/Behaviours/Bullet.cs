@@ -14,6 +14,7 @@ public class Bullet : MonoBehaviour
     private Vector3 dir;
     private RaycastHit2D expected_hit;
     private List<Scuffable> things_scuffed = new List<Scuffable>();
+    private float progress;
 
 
     public void Init(Vector3 _dir, RaycastHit2D _hit)
@@ -38,7 +39,8 @@ public class Bullet : MonoBehaviour
         transform.rotation = Quaternion.LookRotation(dir);
 
         float dist_to_target = Vector3.Distance(transform.position, expected_hit.rigidbody.position);
-        GeneralCanvas.distance_text.text = (dist_to_target / 5).ToString("F2") + "m";
+        progress += speed * Time.unscaledDeltaTime;
+        GeneralCanvas.distance_text.text = (progress / 5).ToString("F2") + "m";
 
         Vector3 current_pos = transform.position;
 
