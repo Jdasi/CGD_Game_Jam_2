@@ -11,14 +11,15 @@ public class DestructableWindow : MonoBehaviour
     private bool fired;
 
 
-    public void Break()
+    public void Break(bool _with_sound = true)
     {
         fired = true;
 
         GameObject prefab = broken_windows[Random.Range(0, broken_windows.Length)];
         Instantiate(prefab, transform.position, prefab.transform.rotation);
 
-        AudioManager.PlayOneShot(break_clip);
+        if (_with_sound)
+            AudioManager.PlayOneShot(break_clip);
 
         Destroy(this.gameObject);
     }
@@ -27,8 +28,12 @@ public class DestructableWindow : MonoBehaviour
     public void BreakShot(BulletImpact _impact)
     {
         Instantiate(force_explosion, _impact.pos, force_explosion.transform.rotation);
+        bool unscaled_sound = _impact.body != null;
+        
+        if (unscaled_sound)
+            AudioManager.PlayOneShotUnscaled(break_clip);
 
-        Break();
+        Break(!unscaled_sound);
     }
 
 

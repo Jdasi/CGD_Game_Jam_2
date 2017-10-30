@@ -67,6 +67,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   splat: {fileID: 4800980025767760, guid: 37bc8ce5ca9791c4e94c87e22b10bc06, type: 2}
+  min_size: 0.5
+  max_size: 1.5
 --- !u!198 &198081657157052660
 ParticleSystem:
   m_ObjectHideFlags: 1

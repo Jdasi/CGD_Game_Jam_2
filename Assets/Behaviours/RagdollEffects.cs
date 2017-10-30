@@ -31,6 +31,7 @@ public class RagdollEffects : MonoBehaviour
 
     void SpawnSplat(Vector3 _pos)
     {
+        AudioManager.PlayOneShot("blood_hit");
         Instantiate(blood_splat, _pos, Quaternion.identity);
     }
 
