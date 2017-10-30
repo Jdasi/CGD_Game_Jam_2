@@ -435,11 +435,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
-    - target: {fileID: 114376171913034518, guid: cb3567d7c3d0af14a8b56a46a95896eb,
-        type: 2}
-      propertyPath: target_killed.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1506942082}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cb3567d7c3d0af14a8b56a46a95896eb, type: 2}
   m_IsPrefabParent: 0
@@ -739,11 +734,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 114830233336654584, guid: afb1661080a61424196e17e448e27f5b,
-        type: 2}
-      propertyPath: target_killed.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1506942082}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: afb1661080a61424196e17e448e27f5b, type: 2}
   m_IsPrefabParent: 0
@@ -1009,7 +999,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f493b09901c5f1a49a23317e485226db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sniper_cam_goto: {x: 104.78, y: 14.94, z: 0}
+  sniper_cam_goto: {x: 105, y: 15, z: 0}
   level_time_limit: 60
   final_killcam_delay: 3
   level_timer: 0
@@ -1652,6 +1642,33 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
+--- !u!114 &1435608220
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1435608218}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc689ad22ab2cbe42aa6853f55d4ebf1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hit_events:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1435608219}
+        m_MethodName: KillTarget
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: CustomEvents+BulletImpactEvent, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!1 &1486599907
 GameObject:
   m_ObjectHideFlags: 0
@@ -1995,12 +2012,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 88139a33ddfb5f440a9e1b3d61935cb4, type: 2}
   m_IsPrefabParent: 0
---- !u!114 &1506942082 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 114685719228418286, guid: 88139a33ddfb5f440a9e1b3d61935cb4,
-    type: 2}
-  m_PrefabInternal: {fileID: 1506942081}
-  m_Script: {fileID: 11500000, guid: 0c3c09a848f3b634f8bea30bae0ff8f4, type: 3}
 --- !u!50 &1658369361 stripped
 Rigidbody2D:
   m_PrefabParentObject: {fileID: 50649902328281884, guid: d95dc3584b1a35f42af7a3d071eba965,
@@ -2470,11 +2481,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 114377816296770708, guid: e261d730415040b40bb84d91ef1da5b0,
-        type: 2}
-      propertyPath: target_killed.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1506942082}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e261d730415040b40bb84d91ef1da5b0, type: 2}
   m_IsPrefabParent: 0
@@ -2487,11 +2493,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4735437044204686, guid: 4d94ec59212f94743b3e757742f04b99, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 74.17
+      value: 74.16
       objectReference: {fileID: 0}
     - target: {fileID: 4735437044204686, guid: 4d94ec59212f94743b3e757742f04b99, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 13.3
+      value: 13.36
       objectReference: {fileID: 0}
     - target: {fileID: 4735437044204686, guid: 4d94ec59212f94743b3e757742f04b99, type: 2}
       propertyPath: m_LocalPosition.z
