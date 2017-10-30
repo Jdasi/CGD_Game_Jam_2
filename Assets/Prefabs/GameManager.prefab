@@ -37,12 +37,12 @@ GameObject:
   - component: {fileID: 224271118000341224}
   - component: {fileID: 222136992794440996}
   m_Layer: 0
-  m_Name: Panel
+  m_Name: ScorePanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1375354032727752
 GameObject:
   m_ObjectHideFlags: 0
