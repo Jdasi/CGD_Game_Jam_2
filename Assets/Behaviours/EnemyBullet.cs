@@ -6,6 +6,7 @@ public class EnemyBullet : MonoBehaviour
 {
     [SerializeField] float bullet_speed;
     [SerializeField] float bullet_force;
+    [SerializeField] float destroy_delay;
     [SerializeField] LayerMask hit_layers;
     
     private Vector3 dir;
@@ -19,7 +20,7 @@ public class EnemyBullet : MonoBehaviour
 
     void Start()
     {
-
+        Invoke("KillBullet", destroy_delay);
     }
 
 
@@ -47,6 +48,12 @@ public class EnemyBullet : MonoBehaviour
             hit.rigidbody.AddForce(dir * bullet_force, ForceMode2D.Impulse);
         }
 
+        Destroy(this.gameObject);
+    }
+
+
+    void KillBullet()
+    {
         Destroy(this.gameObject);
     }
 

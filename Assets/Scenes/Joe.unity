@@ -707,6 +707,16 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 233798923558058796, guid: ac0dbe9cd34ba3842b2847a23862ff39,
+        type: 2}
+      propertyPath: m_ConnectedAnchor.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 233798923558058796, guid: ac0dbe9cd34ba3842b2847a23862ff39,
+        type: 2}
+      propertyPath: m_ConnectedAnchor.y
+      value: 0.5048549
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ac0dbe9cd34ba3842b2847a23862ff39, type: 2}
   m_IsPrefabParent: 0
@@ -2121,10 +2131,6 @@ Prefab:
     - target: {fileID: 1844678222833958, guid: ac0dbe9cd34ba3842b2847a23862ff39, type: 2}
       propertyPath: m_Name
       value: EnemyTurret (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 4692365753504476, guid: ac0dbe9cd34ba3842b2847a23862ff39, type: 2}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 180.00002
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ac0dbe9cd34ba3842b2847a23862ff39, type: 2}
@@ -5343,12 +5349,12 @@ Prefab:
     - target: {fileID: 233798923558058796, guid: ac0dbe9cd34ba3842b2847a23862ff39,
         type: 2}
       propertyPath: m_ConnectedAnchor.x
-      value: 0.00000008490527
+      value: 0.000000009930541
       objectReference: {fileID: 0}
     - target: {fileID: 233798923558058796, guid: ac0dbe9cd34ba3842b2847a23862ff39,
         type: 2}
       propertyPath: m_ConnectedAnchor.y
-      value: 0.5048561
+      value: 0.504854
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ac0dbe9cd34ba3842b2847a23862ff39, type: 2}

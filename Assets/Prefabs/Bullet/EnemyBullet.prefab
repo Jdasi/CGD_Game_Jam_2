@@ -54,6 +54,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bullet_speed: 10
   bullet_force: 500
+  destroy_delay: 5
   hit_layers:
     serializedVersion: 2
     m_Bits: 4294426313

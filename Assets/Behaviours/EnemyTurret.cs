@@ -9,6 +9,7 @@ public class EnemyTurret : MonoBehaviour
     [SerializeField] float engage_distance;
     [SerializeField] float engage_angle;
     [SerializeField] float shoot_delay;
+    [SerializeField] AudioClip[] shot_clips;
 
     [Header("References")]
     [SerializeField] Rigidbody2D turret_base;
@@ -86,6 +87,7 @@ public class EnemyTurret : MonoBehaviour
             return;
 
         shoot_timer = shoot_delay;
+        AudioManager.PlayOneShot(shot_clips[Random.Range(0, shot_clips.Length)]);
 
         var particle = Instantiate(shoot_particle_prefab, shoot_point.position,
             Quaternion.LookRotation(turret_barrel.transform.up));

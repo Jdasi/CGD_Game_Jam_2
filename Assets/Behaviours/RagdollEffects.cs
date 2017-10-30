@@ -51,7 +51,7 @@ public class RagdollEffects : MonoBehaviour
             hover_script.SetAlive(false);
         }
 
-        _impact.body.AddForce(_impact.dir * bullet_hit_force);
+        _impact.body.AddForce(_impact.dir * bullet_hit_force, ForceMode2D.Impulse);
     }
 
 }
