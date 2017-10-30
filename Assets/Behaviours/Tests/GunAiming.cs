@@ -22,7 +22,6 @@ public class GunAiming : MonoBehaviour
     [SerializeField] LayerMask ray_hit_layers;
     [SerializeField] LayerMask ray_obstacle_layers;
     [SerializeField] LayerMask cast_hit_layers;
-    [SerializeField] WheelchairControl wheelchair;
 
     [Header("References")]
     [SerializeField] Rigidbody2D gun_aimer;
@@ -203,10 +202,9 @@ public class GunAiming : MonoBehaviour
 	void FixedUpdate()
     {
         Vector3 gun_force = (target_pos - gun.transform.position).normalized * aim_force;
-		gun_aimer.AddForce(gun_force);
 
-        if (wheelchair != null)
-            wheelchair.rigid_body.AddForce(-gun_force);
+		gun_aimer.AddForce(gun_force);
+        GameManager.scene.player.bod.AddForce(-gun_force);
     }
 
 }

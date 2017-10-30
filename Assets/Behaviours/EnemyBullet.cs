@@ -5,6 +5,7 @@ using UnityEngine;
 public class EnemyBullet : MonoBehaviour
 {
     [SerializeField] float bullet_speed;
+    [SerializeField] float bullet_force;
     [SerializeField] LayerMask hit_layers;
     
     private Vector3 dir;
@@ -43,7 +44,7 @@ public class EnemyBullet : MonoBehaviour
 
         if (hit.collider.CompareTag("Player"))
         {
-            hit.rigidbody.AddForce(dir * 1000, ForceMode2D.Impulse);
+            hit.rigidbody.AddForce(dir * bullet_force, ForceMode2D.Impulse);
         }
 
         Destroy(this.gameObject);

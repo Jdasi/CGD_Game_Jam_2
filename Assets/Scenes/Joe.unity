@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -2073,7 +2073,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 556803133}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 64.7, y: 21.3, z: 0}
+  m_LocalPosition: {x: 70.5, y: 26, z: 0}
   m_LocalScale: {x: 48.582184, y: 5.0641737, z: 0.781891}
   m_Children: []
   m_Father: {fileID: 375233831}
@@ -2341,12 +2341,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
---- !u!114 &674537952 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 114080104150230352, guid: d95dc3584b1a35f42af7a3d071eba965,
-    type: 2}
-  m_PrefabInternal: {fileID: 1863001451}
-  m_Script: {fileID: 11500000, guid: 8a7932effb6a51743b60e3313ee4c7aa, type: 3}
 --- !u!1 &675060903
 GameObject:
   m_ObjectHideFlags: 0
@@ -5403,11 +5397,6 @@ Prefab:
       propertyPath: m_ConnectedRigidBody
       value: 
       objectReference: {fileID: 1963837667}
-    - target: {fileID: 114712879997974906, guid: 82e7626504d44b543baf0ef019838040,
-        type: 2}
-      propertyPath: wheelchair
-      value: 
-      objectReference: {fileID: 674537952}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 82e7626504d44b543baf0ef019838040, type: 2}
   m_IsPrefabParent: 0
