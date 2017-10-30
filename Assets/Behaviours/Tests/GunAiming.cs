@@ -117,12 +117,8 @@ public class GunAiming : MonoBehaviour
 
     void SpawnParticle()
     {
-        var particle = Instantiate(particle_effect);
-
-        particle.transform.position = muzzle.position;
-        particle.transform.rotation = Quaternion.LookRotation(gun.transform.right);
-
-        Destroy(particle, 5);
+        var particle = Instantiate(particle_effect, muzzle.position,
+            Quaternion.LookRotation(gun.transform.right));
     }
 
 
