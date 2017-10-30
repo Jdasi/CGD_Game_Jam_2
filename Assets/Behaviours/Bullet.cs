@@ -25,7 +25,7 @@ public class Bullet : MonoBehaviour
 
     void Start()
     {
-        GeneralCanvas.distance_text.gameObject.SetActive(true);
+
     }
 
 
@@ -37,14 +37,12 @@ public class Bullet : MonoBehaviour
         transform.position += dir * speed * Time.unscaledDeltaTime;
         transform.rotation = Quaternion.LookRotation(dir);
 
-        float dist_to_target = Vector3.Distance(transform.position, expected_hit.rigidbody.position);
-        GeneralCanvas.distance_text.text = (dist_to_target / 5).ToString("F2") + "m";
-
         Vector3 current_pos = transform.position;
 
         ScuffCheck(prev_pos, current_pos);
 
-        if (dist_to_target < 0.5f)
+        if (Vector3.Distance(transform.position,
+            expected_hit.rigidbody.position) < 0.5f)
         {
             TargetableBody targetable = expected_hit.rigidbody.GetComponent<TargetableBody>();
             if (targetable != null)
@@ -72,12 +70,6 @@ public class Bullet : MonoBehaviour
 
         scuffable.Scuff(new BulletImpact(hit.point, diff, expected_hit.rigidbody));
         things_scuffed.Add(scuffable);
-    }
-
-
-    void OnDestroy()
-    {
-        GeneralCanvas.distance_text.gameObject.SetActive(false);
     }
 
 }
