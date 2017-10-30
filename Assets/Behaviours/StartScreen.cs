@@ -10,6 +10,7 @@ public class StartScreen : MonoBehaviour
     [SerializeField] Collider2D stopper;
     [SerializeField] int scene_build_index;
     [SerializeField] float load_delay = 4;
+    [SerializeField] GameObject start_title;
 
     private bool loading = false;
 
@@ -19,6 +20,7 @@ public class StartScreen : MonoBehaviour
         if (!Input.GetButtonDown("Submit") || loading)
             return;
 
+        start_title.SetActive((false));
         loading = true;
         StartGame();
     }
