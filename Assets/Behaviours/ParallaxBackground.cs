@@ -15,13 +15,13 @@ public class ParallaxBackground : MonoBehaviour
     {
         rel = Camera.main.transform;
         prev_pos = rel.position;
-
-        parallax_scale = transform.position.z * -1;
     }
 
 
     void Update()
     {
+        parallax_scale = transform.position.z * -1;
+
         float parallax = (prev_pos.x - rel.transform.position.x) * parallax_scale;
         float target_x = transform.position.x + parallax;
 

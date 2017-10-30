@@ -1610,65 +1610,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7e3840714916f7442b7c5d58e2260cf7, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &1435608218 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1137520375464758, guid: 4d94ec59212f94743b3e757742f04b99,
-    type: 2}
-  m_PrefabInternal: {fileID: 1959253039}
---- !u!114 &1435608219
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1435608218}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0c3c09a848f3b634f8bea30bae0ff8f4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  trigger_events:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 848478906}
-        m_MethodName: TargetKilled
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
---- !u!114 &1435608220
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1435608218}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bc689ad22ab2cbe42aa6853f55d4ebf1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hit_events:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1435608219}
-        m_MethodName: KillTarget
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_TypeName: CustomEvents+BulletImpactEvent, Assembly-CSharp, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
 --- !u!1 &1486599907
 GameObject:
   m_ObjectHideFlags: 0
@@ -2523,6 +2464,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 114367136134889706, guid: 4d94ec59212f94743b3e757742f04b99,
+        type: 2}
+      propertyPath: trigger_events.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 848478906}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4d94ec59212f94743b3e757742f04b99, type: 2}
   m_IsPrefabParent: 0
