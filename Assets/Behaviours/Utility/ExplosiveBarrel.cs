@@ -5,7 +5,6 @@ using UnityEngine.Events;
 
 public class ExplosiveBarrel : MonoBehaviour
 {
-    [SerializeField] UnityEvent target_killed;
     [SerializeField] float explosion_hit_check_range = 3.0f;
 
     [SerializeField] LayerMask target_layer;
@@ -28,6 +27,8 @@ public class ExplosiveBarrel : MonoBehaviour
 
     void ExplosionTargetCheck()
     {
+        // If we hit multiple parts of Ragdoll,
+        // We only need to need to make function call once
         bool target_hit = false;
 
         Collider2D[] hits;
@@ -39,11 +40,11 @@ public class ExplosiveBarrel : MonoBehaviour
         {
             if (hit.CompareTag("Ragdoll") && target_hit == false)
             {
-                target_killed.Invoke();
+                hit.GetComponentInParent<TargetStatus>().KillTarget();
                 target_hit = true;
             }
 
-            else if (hit.CompareTag("Barrel") && hit.gameObject != this.gameObject)
+            if (hit.CompareTag("Barrel") && hit.gameObject != this.gameObject)
             {
                 hit.GetComponent<ExplosiveBarrel>().Explode();
             }
