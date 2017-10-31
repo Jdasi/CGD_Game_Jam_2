@@ -5,51 +5,53 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.EventSystems;
 
-public class MissionButton : MonoBehaviour {
+public class MissionButton : MonoBehaviour
+{
 
     public List<GameObject> briefs;
     private bool alive;
     private int fadeSpeed;
 
     public GameObject CameraScript;
+    private List<CanvasGroup> panels = new List<CanvasGroup>();
+    private CanvasGroup current_panel;
 
     // Use this for initialization
-    void Start ()
+    void Start()
     {
         alive = true;
-        fadeSpeed = 4;
+        fadeSpeed = 2;
     }
-	
-	// Update is called once per frame
-	void Update ()
+
+    // Update is called once per frame
+    void Update()
     {
-		
-	}
+        foreach (CanvasGroup panel in panels)
+        {
+            if (current_panel == panel)
+            {
+                if (panel.alpha < 1)
+                    panel.alpha += fadeSpeed * Time.deltaTime;
+            }
+            else
+            {
+                if (panel.alpha > 0)
+                    panel.alpha -= fadeSpeed * Time.deltaTime;
+            }
+        }
+    }
 
     public void ShowGui(CanvasGroup Panel)
     {
-        StartCoroutine(Show(Panel));
+        if (!panels.Contains(Panel))
+            panels.Add(Panel);
+
+        current_panel = Panel;
     }
 
     public void HideGui(CanvasGroup Panel)
     {
-        StartCoroutine(Hide(Panel));
-    }
-    private IEnumerator Show(CanvasGroup panel)
-    {
-        while(panel.alpha < 1)
-        {
-            panel.alpha += Time.deltaTime * fadeSpeed;
-            yield return null;
-        }
-    }
-    private IEnumerator Hide(CanvasGroup panel)
-    {
-        while (panel.alpha > 0)
-        {
-            panel.alpha -= Time.deltaTime * fadeSpeed;
-            yield return null;
-        }
+        current_panel = null;
     }
 
     public void BriefMission1(GameObject BriefOne)
