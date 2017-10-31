@@ -42,6 +42,7 @@ GameObject:
   - component: {fileID: 114434036409192258}
   - component: {fileID: 114367136134889706}
   - component: {fileID: 114390566769177168}
+  - component: {fileID: 114084865000890604}
   m_Layer: 0
   m_Name: Ragdoll
   m_TagString: Untagged
@@ -351,8 +352,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1137520375464758}
-  m_LocalRotation: {x: -0, y: -0, z: -0.12864526, w: 0.9916907}
-  m_LocalPosition: {x: 74.16, y: 13.36, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: 0.011287331, w: 0.99993634}
+  m_LocalPosition: {x: -78.2, y: 7.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4487811572213986}
@@ -821,6 +822,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &114084865000890604
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1137520375464758}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36bc09fff0dfd03448383b9d2d7b2096, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hoverForce: 150
+  hoverHeight: 10
 --- !u!114 &114171597601641418
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1038,9 +1052,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88628f1f9c26c934caec59436066df3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bullet_hit_force: 50000
+  bullet_hit_force: 100
   blood_splat: {fileID: 1760822168114440, guid: d362bee2660ff6c41a6975422ea6c8ef,
     type: 2}
+  hover_script: {fileID: 0}
 --- !u!114 &114501660695886994
 MonoBehaviour:
   m_ObjectHideFlags: 1

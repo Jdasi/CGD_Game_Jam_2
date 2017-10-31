@@ -175,8 +175,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1844678222833958}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -72.3, y: -3.98, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: 1, w: 0.00000011920929}
+  m_LocalPosition: {x: 7.2, y: 34.4, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4384201622247408}
@@ -185,7 +185,7 @@ Transform:
   - {fileID: 4081961499761038}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180.00002}
 --- !u!4 &4737689817701432
 Transform:
   m_ObjectHideFlags: 1
@@ -332,6 +332,11 @@ MonoBehaviour:
   engage_distance: 50
   engage_angle: 30
   shoot_delay: 2
+  shot_clips:
+  - {fileID: 8300000, guid: 6967c658e8e979640bf4b6fd98ada5c2, type: 3}
+  - {fileID: 8300000, guid: ee7afabd7ec70b24d985e514ebdb085a, type: 3}
+  - {fileID: 8300000, guid: 7f76555fd08f9454580a016256bf5bf4, type: 3}
+  - {fileID: 8300000, guid: 302d9bfc186da74458b5ff1d4ad4e682, type: 3}
   turret_base: {fileID: 50772228939100594}
   turret_barrel: {fileID: 50272673542507138}
   shoot_point: {fileID: 4737689817701432}
@@ -673,7 +678,7 @@ HingeJoint2D:
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: -0.49736473}
-  m_ConnectedAnchor: {x: 0, y: 0.5048549}
+  m_ConnectedAnchor: {x: 0.00000008490527, y: 0.5048561}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0

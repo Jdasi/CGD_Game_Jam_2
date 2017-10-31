@@ -37,6 +37,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4053594048771570}
   - component: {fileID: 50697418846065264}
+  - component: {fileID: 114963717350419594}
   - component: {fileID: 114092269170834160}
   m_Layer: 16
   m_Name: BulletCasing
@@ -129,6 +130,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destroy_delay: 5
+--- !u!114 &114963717350419594
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1250158307648726}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc829c384b5fb5f48a041e6155839588, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  collision_clips:
+  - {fileID: 8300000, guid: afaea5029f847f84ebf03e9cb8681a67, type: 3}
+  - {fileID: 8300000, guid: f60c5f0394856614a83d5a86e59b2d1d, type: 3}
+  - {fileID: 8300000, guid: 4c2f700f380079941bee4807aa0ee67b, type: 3}
+  - {fileID: 8300000, guid: d6415f719c482f240a087c894091774d, type: 3}
 --- !u!212 &212994229532396474
 SpriteRenderer:
   m_ObjectHideFlags: 1

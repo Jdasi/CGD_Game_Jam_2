@@ -1854,7 +1854,6 @@ MonoBehaviour:
   cast_hit_layers:
     serializedVersion: 2
     m_Bits: 131072
-  wheelchair: {fileID: 0}
   gun_aimer: {fileID: 50319266040379688}
   gun: {fileID: 50725149769102920}
   ejection_point: {fileID: 4817015322299998}
@@ -1888,6 +1887,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a53a44dd1ade6a14aa0f02b26a5e69d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ejection_force: 3000
   hinge_joint: {fileID: 233405086111705454}
 --- !u!120 &120057430046622496
 LineRenderer:

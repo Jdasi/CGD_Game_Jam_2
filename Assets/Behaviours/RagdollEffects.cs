@@ -4,9 +4,17 @@ using UnityEngine;
 
 public class RagdollEffects : MonoBehaviour
 {
-    [SerializeField] float bullet_hit_force;
-    [SerializeField] GameObject blood_splat;
+    [SerializeField]
+    float bullet_hit_force;
+    [SerializeField]
+    GameObject blood_splat;
+    [SerializeField]
+    Hover hover_script;
 
+    void Start()
+    {
+        hover_script = GetComponent<Hover>();
+    }
 
     public void HitHead(BulletImpact _impact)
     {
@@ -38,7 +46,12 @@ public class RagdollEffects : MonoBehaviour
 
     void AddForce(BulletImpact _impact)
     {
-        _impact.body.AddForce(_impact.dir * bullet_hit_force);
+        if (hover_script.GetAlive())
+        {
+            hover_script.SetAlive(false);
+        }
+
+        _impact.body.AddForce(_impact.dir * bullet_hit_force, ForceMode2D.Impulse);
     }
 
 }
