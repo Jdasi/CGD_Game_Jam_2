@@ -17,19 +17,19 @@ public class GeneralCanvas : MonoBehaviour
     private static GeneralCanvas instance;
 
 
-    public void GameStart()
+    public static void GameStart()
     {
         distance_text.gameObject.SetActive(false);
-        health_panel.gameObject.SetActive(true);
+        instance.health_panel.gameObject.SetActive(true);
         health_fill.fillAmount = 1;
         damage_fade.FadeOut(0);
     }
 
 
-    public void GameEnd()
+    public static void GameEnd()
     {
         distance_text.gameObject.SetActive(false);
-        health_panel.gameObject.SetActive(false);
+        instance.health_panel.gameObject.SetActive(false);
         damage_fade.FadeOut(0);
     }
 
@@ -50,6 +50,7 @@ public class GeneralCanvas : MonoBehaviour
     void InitSingleton()
     {
         instance = this;
+        damage_fade.Init();
     }
 
 
