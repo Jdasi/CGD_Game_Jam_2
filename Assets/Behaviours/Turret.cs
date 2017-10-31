@@ -22,12 +22,14 @@ public class Turret : MonoBehaviour
         //if player assigned
         if (target != null)
         {
-            Debug.Log(Vector3.Dot(transform.right, target.right));
-            if (Vector3.Distance(transform.position, target.position) < range && Vector3.Dot(transform.right, target.right) >0) // check if player is in range
+            if (Vector3.Distance(transform.position, target.position) < range) // check if player is in range
             {
                 float angle = Vector3.Angle(transform.up, target.position);
                 if (angle > min_angle && angle < max_angle)
-                    transform.right = -(target.position - transform.position);
+                {
+                    Vector3 new_right = -(target.position - transform.position);
+                    transform.right = Vector3.Slerp(transform.right, new_right, Time.deltaTime);
+                }
 
             }
         }
