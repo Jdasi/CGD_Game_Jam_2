@@ -13,7 +13,7 @@ public class HookAiming : MonoBehaviour
     [Header("References")]
     [SerializeField] Rigidbody2D hand_rb;
 
-    private Vector3 hook_point;
+    private Transform hook_point;
     private bool hook_attached;
 
 
@@ -37,11 +37,14 @@ public class HookAiming : MonoBehaviour
 
         if (hit.collider != null)
         {
-            hook_point = hit.point;
-            hook_attached = true;
+            hook_point = new GameObject().transform;
+            hook_point.name = "Hook Point";
 
+            hook_point.position = hit.point;
+            hook_point.SetParent(hit.collider.transform);
+
+            hook_attached = true;
             hook_line.positionCount = 2;
-            hook_line.SetPosition(1, hit.point);
 
             AudioManager.PlayOneShot("hook_connect");
         }
@@ -50,10 +53,10 @@ public class HookAiming : MonoBehaviour
 
     void HandleHookRelease()
     {
-        if (!hook_attached || !Input.GetButtonUp("Fire2"))
+        if (!hook_attached || !Input.GetButtonUp("Fire2") || hook_point == null)
             return;
 
-        hook_point = Vector3.zero;
+        Destroy(hook_point.gameObject);
         hook_attached = false;
 
         hook_line.positionCount = 0;
@@ -64,10 +67,11 @@ public class HookAiming : MonoBehaviour
 
     void UpdateHook()
     {
-        if (hook_attached)
+        if (hook_attached && hook_point != null)
         {
             hook_line.enabled = true;
             hook_line.SetPosition(0, hand_rb.transform.position);
+            hook_line.SetPosition(1, hook_point.position);
         }
         else
         {
@@ -81,7 +85,10 @@ public class HookAiming : MonoBehaviour
         if (!hook_attached)
             return;
 
-        Vector3 dir = (hook_point - hand_rb.transform.position).normalized;
+        if (hook_point == null)
+            return;
+
+        Vector3 dir = (hook_point.position - hand_rb.transform.position).normalized;
         hand_rb.AddForce(dir * pull_force);
     }
 

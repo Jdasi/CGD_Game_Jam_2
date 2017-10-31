@@ -20,9 +20,9 @@ public class MapInfo : MonoBehaviour {
 	// Use this for initialization
 	void Start ()
     {
-        gannonAlive = false;
-        ducharmeAlive = true;
-        nabeemAlive = true;
+        gannonAlive = true;
+        ducharmeAlive = false;
+        nabeemAlive = false;
 
         CheckCharacters();
 	}
@@ -58,6 +58,11 @@ public class MapInfo : MonoBehaviour {
         {
             Mission3Alive.gameObject.SetActive(true);
             Mission3Dead.gameObject.SetActive(false);
+        }
+        else if (nabeemAlive == false)
+        {
+            Mission3Alive.gameObject.SetActive(false);
+            Mission3Dead.gameObject.SetActive(true);
         }
     }
 }

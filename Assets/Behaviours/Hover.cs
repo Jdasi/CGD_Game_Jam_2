@@ -10,7 +10,8 @@ public class Hover : MonoBehaviour
     [SerializeField]
     float hoverHeight = 10.0f;
     private GameObject head = null;
-    private bool is_alive = true;
+    [SerializeField]
+    bool is_alive = true;
 
     // Use this for initialization
     void Start()
@@ -56,5 +57,11 @@ public class Hover : MonoBehaviour
     public void SetAlive(bool alv)
     {
         is_alive = alv;
+    }
+
+
+    public void IsDead()
+    {
+        is_alive = false;
     }
 }

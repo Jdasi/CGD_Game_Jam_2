@@ -1810,7 +1810,7 @@ MonoBehaviour:
   pull_force: 750
   hit_layers:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 131073
   hook_line: {fileID: 120540017681500978}
   hand_rb: {fileID: 50155577423970872}
 --- !u!114 &114646792812209384
@@ -1839,7 +1839,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   can_shoot: 1
   aim_force: 1000
-  recoil_force: 10000
+  recoil_force: 15000
   ejection_force: 750
   min_ejection_torque: 10
   max_ejection_torque: 40
