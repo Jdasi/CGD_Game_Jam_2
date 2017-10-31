@@ -2,11 +2,23 @@
 using System.Collections;
 using System.Collections.Generic;
 
+public enum MusicType
+{
+    TITLE,
+    MAP,
+    GAME
+}
+
 public class AudioManager : MonoBehaviour
 {
     public static AudioSettings settings { get { return instance.settings_; } }
 
     [SerializeField] AudioSettings settings_;
+
+    [Header("Music")]
+    [SerializeField] AudioClip title_music;
+    [SerializeField] AudioClip map_music;
+    [SerializeField] AudioClip game_music;
 
     private static AudioManager instance;
 
@@ -15,6 +27,22 @@ public class AudioManager : MonoBehaviour
     private AudioSource sfx_unscaled_source;
 
     private AudioClip last_clip_played;
+
+
+    public static void PlayMusic(MusicType _music)
+    {
+        instance.music_source.Stop();
+
+        switch (_music)
+        {
+            case MusicType.TITLE: instance.music_source.clip = instance.title_music; break;
+            case MusicType.MAP: instance.music_source.clip = instance.map_music; break;
+            case MusicType.GAME: instance.music_source.clip = instance.game_music; break;
+        }
+
+        instance.music_source.loop = true;
+        instance.music_source.Play();
+    }
 
 
     public static void PlayOneShot(string _clip_name)
@@ -66,22 +94,6 @@ public class AudioManager : MonoBehaviour
     }
 
 
-    public void PlayRandomMusic()
-    {
-        if (settings.music_clips.Count == 0)
-            return;
-
-        music_source.Stop();
-
-        int index = Random.Range(0, settings.music_clips.Count);
-
-        music_source.clip = settings.music_clips[index];
-        music_source.loop = true;
-
-        music_source.Play();
-    }
-
-
     void Awake()
     {
         if (instance == null)
@@ -109,8 +121,6 @@ public class AudioManager : MonoBehaviour
         music_source.volume = settings.music_volume;
         sfx_source.volume = settings.sfx_volume;
         sfx_unscaled_source.volume = settings.sfx_volume;
-
-        PlayRandomMusic();
     }
 
 
