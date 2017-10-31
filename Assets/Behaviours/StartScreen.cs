@@ -20,6 +20,7 @@ public class StartScreen : MonoBehaviour
         if (!Input.GetButtonDown("Submit") || loading)
             return;
 
+        AudioManager.PlayOneShot("gun_shot");
         start_title.SetActive((false));
         loading = true;
         StartGame();
