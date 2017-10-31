@@ -87,5 +87,6 @@ public class MissionButton : MonoBehaviour {
     public void PlayMission(string missionName)
     {
         SceneManager.LoadScene(missionName);
+        DontDestroyOnLoad(GameObject.Find("MapScript"));
     }
 }
