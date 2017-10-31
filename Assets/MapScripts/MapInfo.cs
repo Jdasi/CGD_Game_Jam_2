@@ -5,9 +5,9 @@ using UnityEngine.UI;
 
 public class MapInfo : MonoBehaviour {
 
-    private bool gannonAlive;
-    private bool ducharmeAlive;
-    private bool nabeemAlive;
+    public static bool gannonAlive;
+    public static bool ducharmeAlive;
+    public static bool nabeemAlive;
 
     public Button Mission1Alive;
     public Button Mission2Alive;
@@ -21,8 +21,8 @@ public class MapInfo : MonoBehaviour {
 	void Start ()
     {
         gannonAlive = true;
-        ducharmeAlive = false;
-        nabeemAlive = false;
+        ducharmeAlive = true;
+        nabeemAlive = true;
 
         CheckCharacters();
 	}
