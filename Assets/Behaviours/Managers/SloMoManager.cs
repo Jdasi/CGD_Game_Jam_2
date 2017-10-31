@@ -47,4 +47,10 @@ public class SloMoManager : MonoBehaviour
         Time.fixedDeltaTime = Time.timeScale * 0.02f;
     }
 
+
+    void OnLevelWasLoaded(int level)
+    {
+        bullet_time = false;
+    }
+
 }

@@ -9,9 +9,8 @@ public class Hover : MonoBehaviour
     float hoverForce = 150.0f;
     [SerializeField]
     float hoverHeight = 10.0f;
-    private GameObject head = null;
-    [SerializeField]
-    bool is_alive = true;
+    [SerializeField] GameObject head = null;
+    [SerializeField] bool is_alive = true;
 
     // Use this for initialization
     void Start()
@@ -40,13 +39,26 @@ public class Hover : MonoBehaviour
                         if (hit.transform.tag != "Ragdoll")
                         {
                             float proportionalHeight = (hoverHeight - hit.distance) / hoverHeight;
-                            Vector3 appliedHoverForce = Vector3.up * proportionalHeight * hoverForce;
+                            Vector2 appliedHoverForce = Vector2.up * proportionalHeight * hoverForce;
                             head.GetComponent<Rigidbody2D>().AddForce(appliedHoverForce, ForceMode2D.Force);
+
+                            //Walk();
+
+                            return;
                         }
                     }
                 }
             }
         }
+    }
+
+    private void Walk()
+    {
+        Vector2 rightForce = Vector2.right * 50;
+        head.GetComponent<Rigidbody2D>().AddForce(rightForce, ForceMode2D.Force);
+
+        Vector2 upForce = Vector2.up * 50;
+        head.GetComponent<Rigidbody2D>().AddForce(upForce, ForceMode2D.Force);
     }
 
     public bool GetAlive()
@@ -58,7 +70,6 @@ public class Hover : MonoBehaviour
     {
         is_alive = alv;
     }
-
 
     public void IsDead()
     {

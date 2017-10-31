@@ -403,6 +403,9 @@ MonoBehaviour:
   shoot_particle_prefab: {fileID: 1247077968793682, guid: d2ea3e4967b39ba448f25650e43d9d3f,
     type: 2}
   laser_line: {fileID: 120874698832952834}
+  default_layer:
+    serializedVersion: 2
+    m_Bits: 1
   broken_lightbulb: {fileID: 21300006, guid: 9b7eeb0fe2d87a847a5dd047593405a7, type: 3}
   scanning_color: {r: 1, g: 0.8482758, b: 0, a: 1}
   engaging_color: {r: 1, g: 0, b: 0, a: 1}
