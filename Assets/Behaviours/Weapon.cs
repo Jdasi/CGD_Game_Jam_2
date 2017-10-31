@@ -8,7 +8,7 @@ public class Weapon : MonoBehaviour {
     public Rigidbody2D projectile;
     public float force = 1000;
     private float timer = 0.0f;
-    private float delay = 1;
+    public float shoot_delay = 1;
 
 	// Use this for initialization
 	void Start () {
@@ -20,7 +20,7 @@ public class Weapon : MonoBehaviour {
         if(!able_to_shoot)
         {
             timer += Time.deltaTime;
-            if (timer > delay)
+            if (timer > shoot_delay)
             {
                 able_to_shoot = true;
             }
@@ -30,9 +30,12 @@ public class Weapon : MonoBehaviour {
 
     public void Shoot()
     {
+        // if able to shoot
         if (!able_to_shoot) return;
+
         Rigidbody2D shot = Instantiate(projectile, SpawnPosition.position, SpawnPosition.rotation) as Rigidbody2D;
         shot.AddForce(-SpawnPosition.right * force);
+
         able_to_shoot = false;
         timer = 0.0f;
     }

@@ -7,6 +7,9 @@ public class Turret : MonoBehaviour
 
     public Transform target;
     public Weapon weapon;
+    public float range = 30;
+    public float min_angle = 30;
+    public float max_angle = 120;
     // Use this for initialization
     void Start()
     {
@@ -16,12 +19,14 @@ public class Turret : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //if player assigned
         if (target != null)
         {
-            if (Vector3.Distance(transform.position, target.position) < 50)
+            Debug.Log(Vector3.Dot(transform.right, target.right));
+            if (Vector3.Distance(transform.position, target.position) < range && Vector3.Dot(transform.right, target.right) >0) // check if player is in range
             {
                 float angle = Vector3.Angle(transform.up, target.position);
-                if (angle > 30 && angle < 120)
+                if (angle > min_angle && angle < max_angle)
                     transform.right = -(target.position - transform.position);
 
             }
@@ -31,9 +36,9 @@ public class Turret : MonoBehaviour
 
     void FixedUpdate()
     {
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, -transform.right, 50);
-        Debug.DrawRay(transform.position, -transform.right * 50, Color.green);
-        if (hit.collider != null)
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, -transform.right, range);
+        Debug.DrawRay(transform.position, -transform.right * range, Color.green);
+        if (hit.collider != null&& hit.collider.CompareTag("Player"))
         {
             weapon.Shoot();
         }

@@ -13,9 +13,9 @@ public class Ammo : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         alive += Time.deltaTime;
-        if (alive > 3)
+        if (alive > 2)
         {
-            Destroy(this);
+            Destroy(gameObject);
         }
     }
 }
