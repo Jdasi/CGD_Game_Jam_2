@@ -23,7 +23,11 @@ public class Ammo : MonoBehaviour {
     {
         if(collision.collider.CompareTag("Player"))
         {
-            collision.collider.GetComponentInParent<PlayerStatus>().Damage(25);
+            PlayerStatus player = collision.collider.GetComponentInParent<PlayerStatus>();
+
+            if (player != null)
+                player.Damage(25);
+
             Destroy(gameObject);
         }
     }

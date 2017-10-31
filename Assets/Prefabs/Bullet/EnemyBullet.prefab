@@ -58,7 +58,7 @@ MonoBehaviour:
   destroy_delay: 5
   hit_layers:
     serializedVersion: 2
-    m_Bits: 4294426313
+    m_Bits: 4294033097
 --- !u!212 &212407709319823502
 SpriteRenderer:
   m_ObjectHideFlags: 1
