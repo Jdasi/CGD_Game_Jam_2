@@ -553,7 +553,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 20
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
@@ -833,8 +833,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36bc09fff0dfd03448383b9d2d7b2096, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hoverForce: 150
-  hoverHeight: 10
+  hoverForce: 400
+  hoverHeight: 8
+  head: {fileID: 1875053798799374}
+  is_alive: 1
 --- !u!114 &114171597601641418
 MonoBehaviour:
   m_ObjectHideFlags: 1
