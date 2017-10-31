@@ -17,6 +17,7 @@ public class LevelManager : MonoBehaviour
 
     void Start()
     {
+        GeneralCanvas.GameStart();
         level_finished = false;
         // Set Timer
         level_timer = 0;
@@ -30,8 +31,13 @@ public class LevelManager : MonoBehaviour
         if (!level_finished)
             return;
 
-        if (Input.anyKey)
+        Debug.Log("end");
+
+        if (Input.anyKeyDown)
+        {
+            GeneralCanvas.GameEnd();
             SceneManager.LoadScene(1);
+        }
     }
 
 
@@ -53,7 +59,6 @@ public class LevelManager : MonoBehaviour
     // Called By the Target
     public void TargetKilled()
     {
-        level_finished = true;
         StartCoroutine(EndLevel(final_killcam_delay));
     }
 
