@@ -11,9 +11,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ee99f75648a37b48bf729e6a8fecfaf, type: 3}
   m_Name: AudioSettings
   m_EditorClassIdentifier: 
-  music_volume: 0.5
+  music_volume: 0.14
   sfx_volume: 0.5
-  music_clips: []
+  music_clips:
+  - {fileID: 8300000, guid: 2eed4df95aa941744ac256ead9a19929, type: 3}
   sfx_clips:
   - {fileID: 8300000, guid: 651d85f4779641348a79339731c62e6f, type: 3}
   - {fileID: 8300000, guid: 1db1b06c2c79bcd489ed7e296fae98a8, type: 3}

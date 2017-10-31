@@ -12,5 +12,8 @@ EditorBuildSettings:
     path: Assets/Scenes/Map.unity
     guid: fda702a729fe745469e44b019b5b8da8
   - enabled: 1
-    path: Assets/Levels/New Level 1.unity
+    path: Assets/Levels/Nabeem.unity
     guid: 2e1edd96c7efd1049b5e4e6d5955809f
+  - enabled: 1
+    path: Assets/Levels/Gannon.unity
+    guid: 24d1d172f6506c74bab188e12364f3e9
