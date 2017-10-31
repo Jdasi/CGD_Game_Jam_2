@@ -10,6 +10,7 @@ public class ExplosiveObject : MonoBehaviour
     [SerializeField] LayerMask target_layer;
     [SerializeField] GameObject exploded_vehicle;
     [SerializeField] AudioClip explosion;
+    [SerializeField] List<CarMovement> move = new List<CarMovement>();
 
     public void Explode()
     {
@@ -21,7 +22,8 @@ public class ExplosiveObject : MonoBehaviour
 
         AudioManager.PlayOneShot(explosion);
 
-        Destroy(transform.parent.gameObject);
+       move.ForEach(m => m.enabled = false);
+        //Destroy(transform.parent.gameObject);
     }
 
 
