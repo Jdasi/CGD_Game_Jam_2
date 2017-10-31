@@ -21,7 +21,7 @@ public class ExplosiveObject : MonoBehaviour
 
         AudioManager.PlayOneShot(explosion);
 
-        Destroy(this.gameObject);
+        Destroy(transform.parent.gameObject);
     }
 
 

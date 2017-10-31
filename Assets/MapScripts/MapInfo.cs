@@ -22,6 +22,7 @@ public class MapInfo : MonoBehaviour
 	void Start ()
     {
         CheckCharacters();
+        AudioManager.PlayMusic(MusicType.MAP);
 	}
 
 	// Update is called once per frame

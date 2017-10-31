@@ -31,6 +31,7 @@ public class LevelManager : MonoBehaviour
         level_finished = false;
         // Set Timer
         level_timer = 0;
+        AudioManager.PlayMusic(MusicType.GAME);
     }
 
 

@@ -6,9 +6,9 @@ public class Hover : MonoBehaviour
 {
 
     [SerializeField]
-    float hoverForce = 150.0f;
+    float hoverForce = 600.0f;
     [SerializeField]
-    float hoverHeight = 10.0f;
+    float hoverHeight = 8.0f;
     [SerializeField] GameObject head = null;
     [SerializeField] bool is_alive = true;
 
@@ -36,7 +36,8 @@ public class Hover : MonoBehaviour
                 {
                     if (hit)
                     {
-                        if (hit.transform.tag != "Ragdoll")
+                        //if (hit.transform.tag != "Ragdoll")
+                        if (hit.collider.gameObject.layer == 0)
                         {
                             float proportionalHeight = (hoverHeight - hit.distance) / hoverHeight;
                             Vector2 appliedHoverForce = Vector2.up * proportionalHeight * hoverForce;

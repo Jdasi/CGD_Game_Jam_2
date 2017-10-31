@@ -704,6 +704,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   settings_: {fileID: 11400000, guid: 60d78fb7b0e42f04bafe64e4b5e10b17, type: 2}
+  title_music: {fileID: 8300000, guid: ed1ccdf8a7e4ae34ba56c6d29c3d2cab, type: 3}
+  map_music: {fileID: 8300000, guid: dcf49ab10c694ef44864bbb1e7375812, type: 3}
+  game_music: {fileID: 8300000, guid: 2eed4df95aa941744ac256ead9a19929, type: 3}
 --- !u!114 &114805981453706636
 MonoBehaviour:
   m_ObjectHideFlags: 1
