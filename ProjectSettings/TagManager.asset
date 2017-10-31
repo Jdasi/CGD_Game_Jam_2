@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Ragdoll
+  - Barrel
   layers:
   - Default
   - TransparentFX
@@ -29,7 +30,7 @@ TagManager:
   - Scuffable
   - Obstacle
   - Debris
-  - 
+  - Title
   - 
   - 
   - 
@@ -41,4 +42,19 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Background
+    uniqueID: 2918416405
+    locked: 0
+  - name: Midground
+    uniqueID: 137883131
+    locked: 0
+  - name: Blood
+    uniqueID: 2854282145
+    locked: 0
+  - name: Player
+    uniqueID: 2314534651
+    locked: 0
+  - name: Foreground
+    uniqueID: 1088169321
     locked: 0

@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 61912236493720680}
   - component: {fileID: 50506778595851030}
   - component: {fileID: 233001259344027370}
+  - component: {fileID: 114595889278803978}
   m_Layer: 17
   m_Name: right_calf
   m_TagString: Ragdoll
@@ -38,6 +39,10 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4735437044204686}
+  - component: {fileID: 114434036409192258}
+  - component: {fileID: 114367136134889706}
+  - component: {fileID: 114390566769177168}
+  - component: {fileID: 114084865000890604}
   m_Layer: 0
   m_Name: Ragdoll
   m_TagString: Untagged
@@ -57,6 +62,7 @@ GameObject:
   - component: {fileID: 61774552150436680}
   - component: {fileID: 50043689327974698}
   - component: {fileID: 233345747133652466}
+  - component: {fileID: 114525365391959056}
   m_Layer: 17
   m_Name: left_forearm
   m_TagString: Ragdoll
@@ -76,6 +82,7 @@ GameObject:
   - component: {fileID: 61589719087051084}
   - component: {fileID: 50500381997116880}
   - component: {fileID: 233544768019880248}
+  - component: {fileID: 114800743368087566}
   m_Layer: 17
   m_Name: right bicep
   m_TagString: Ragdoll
@@ -95,6 +102,7 @@ GameObject:
   - component: {fileID: 61433920555612714}
   - component: {fileID: 50213342096592192}
   - component: {fileID: 233774297716536632}
+  - component: {fileID: 114394788706143256}
   m_Layer: 17
   m_Name: left_calf
   m_TagString: Ragdoll
@@ -114,6 +122,7 @@ GameObject:
   - component: {fileID: 61477000761698322}
   - component: {fileID: 50947765089937050}
   - component: {fileID: 233679477224280024}
+  - component: {fileID: 114212241830050850}
   m_Layer: 17
   m_Name: right_thigh
   m_TagString: Ragdoll
@@ -133,6 +142,7 @@ GameObject:
   - component: {fileID: 61996954283114278}
   - component: {fileID: 50343144117705110}
   - component: {fileID: 233725917542732794}
+  - component: {fileID: 114196488648077652}
   m_Layer: 17
   m_Name: right_forearm
   m_TagString: Ragdoll
@@ -152,6 +162,7 @@ GameObject:
   - component: {fileID: 58610478554982244}
   - component: {fileID: 50935357578274464}
   - component: {fileID: 233830743827208944}
+  - component: {fileID: 114751715098611880}
   m_Layer: 17
   m_Name: head
   m_TagString: Ragdoll
@@ -171,6 +182,7 @@ GameObject:
   - component: {fileID: 61609176498545848}
   - component: {fileID: 50672464958091610}
   - component: {fileID: 233683151098969738}
+  - component: {fileID: 114171597601641418}
   m_Layer: 17
   m_Name: left_thigh
   m_TagString: Ragdoll
@@ -190,6 +202,7 @@ GameObject:
   - component: {fileID: 61013494039516188}
   - component: {fileID: 50890704975692762}
   - component: {fileID: 233832970143917468}
+  - component: {fileID: 114931628337267604}
   m_Layer: 17
   m_Name: left_bicep
   m_TagString: Ragdoll
@@ -208,6 +221,7 @@ GameObject:
   - component: {fileID: 212048183951181742}
   - component: {fileID: 50683618341792728}
   - component: {fileID: 61575841172932208}
+  - component: {fileID: 114501660695886994}
   m_Layer: 17
   m_Name: body
   m_TagString: Ragdoll
@@ -339,7 +353,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1137520375464758}
   m_LocalRotation: {x: -0, y: -0, z: 0.011287331, w: 0.99993634}
-  m_LocalPosition: {x: 23.79, y: 4.79, z: 0}
+  m_LocalPosition: {x: -78.2, y: 7.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4487811572213986}
@@ -808,6 +822,468 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &114084865000890604
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1137520375464758}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36bc09fff0dfd03448383b9d2d7b2096, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hoverForce: 150
+  hoverHeight: 10
+--- !u!114 &114171597601641418
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1913223688769542}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc689ad22ab2cbe42aa6853f55d4ebf1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hit_events:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 114434036409192258}
+        m_MethodName: HitLimb
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 114367136134889706}
+        m_MethodName: KillTarget
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: CustomEvents+BulletImpactEvent, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+--- !u!114 &114196488648077652
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1796328651225428}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc689ad22ab2cbe42aa6853f55d4ebf1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hit_events:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 114434036409192258}
+        m_MethodName: HitLimb
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 114367136134889706}
+        m_MethodName: KillTarget
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: CustomEvents+BulletImpactEvent, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+--- !u!114 &114212241830050850
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1780101502786852}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc689ad22ab2cbe42aa6853f55d4ebf1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hit_events:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 114434036409192258}
+        m_MethodName: HitLimb
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 114367136134889706}
+        m_MethodName: KillTarget
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: CustomEvents+BulletImpactEvent, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+--- !u!114 &114367136134889706
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1137520375464758}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c3c09a848f3b634f8bea30bae0ff8f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  trigger_events:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_MethodName: TargetKilled
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+--- !u!114 &114390566769177168
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1137520375464758}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc689ad22ab2cbe42aa6853f55d4ebf1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hit_events:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 114367136134889706}
+        m_MethodName: KillTarget
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: CustomEvents+BulletImpactEvent, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+--- !u!114 &114394788706143256
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1561865518471412}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc689ad22ab2cbe42aa6853f55d4ebf1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hit_events:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 114434036409192258}
+        m_MethodName: HitLimb
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 114367136134889706}
+        m_MethodName: KillTarget
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: CustomEvents+BulletImpactEvent, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+--- !u!114 &114434036409192258
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1137520375464758}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88628f1f9c26c934caec59436066df3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bullet_hit_force: 100
+  blood_splat: {fileID: 1760822168114440, guid: d362bee2660ff6c41a6975422ea6c8ef,
+    type: 2}
+  hover_script: {fileID: 0}
+--- !u!114 &114501660695886994
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1965602775111320}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc689ad22ab2cbe42aa6853f55d4ebf1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hit_events:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 114434036409192258}
+        m_MethodName: HitBody
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 114367136134889706}
+        m_MethodName: KillTarget
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: CustomEvents+BulletImpactEvent, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+--- !u!114 &114525365391959056
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1199493222113428}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc689ad22ab2cbe42aa6853f55d4ebf1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hit_events:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 114434036409192258}
+        m_MethodName: HitLimb
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 114367136134889706}
+        m_MethodName: KillTarget
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: CustomEvents+BulletImpactEvent, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+--- !u!114 &114595889278803978
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1102509509384354}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc689ad22ab2cbe42aa6853f55d4ebf1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hit_events:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 114434036409192258}
+        m_MethodName: HitLimb
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 114367136134889706}
+        m_MethodName: KillTarget
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: CustomEvents+BulletImpactEvent, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+--- !u!114 &114751715098611880
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1875053798799374}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc689ad22ab2cbe42aa6853f55d4ebf1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hit_events:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 114434036409192258}
+        m_MethodName: HitHead
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 114367136134889706}
+        m_MethodName: KillTarget
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: CustomEvents+BulletImpactEvent, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+--- !u!114 &114800743368087566
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1411204302296652}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc689ad22ab2cbe42aa6853f55d4ebf1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hit_events:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 114434036409192258}
+        m_MethodName: HitLimb
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 114367136134889706}
+        m_MethodName: KillTarget
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: CustomEvents+BulletImpactEvent, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+--- !u!114 &114931628337267604
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1965600767362016}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc689ad22ab2cbe42aa6853f55d4ebf1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hit_events:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 114434036409192258}
+        m_MethodName: HitLimb
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 114367136134889706}
+        m_MethodName: KillTarget
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: CustomEvents+BulletImpactEvent, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!212 &212048183951181742
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -837,8 +1313,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1980432645
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 97d2bc11954e6e14bbd4de7bd3a28d3d, type: 3}
   m_Color: {r: 0.17647058, g: 0.17647058, b: 0.17647058, a: 1}
@@ -878,8 +1354,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1980432645
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 97d2bc11954e6e14bbd4de7bd3a28d3d, type: 3}
   m_Color: {r: 0.17647058, g: 0.17647058, b: 0.17647058, a: 1}
@@ -919,8 +1395,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1980432645
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 97d2bc11954e6e14bbd4de7bd3a28d3d, type: 3}
   m_Color: {r: 0.17647058, g: 0.17647058, b: 0.17647058, a: 1}
@@ -960,8 +1436,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1980432645
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 97d2bc11954e6e14bbd4de7bd3a28d3d, type: 3}
   m_Color: {r: 0.17647058, g: 0.17647058, b: 0.17647058, a: 1}
@@ -1001,8 +1477,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1980432645
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 97d2bc11954e6e14bbd4de7bd3a28d3d, type: 3}
   m_Color: {r: 0.17647058, g: 0.17647058, b: 0.17647058, a: 1}
@@ -1042,8 +1518,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1980432645
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 5cf09ef50a6b68f449a3534d32bcda86, type: 3}
   m_Color: {r: 0, g: 0, b: 0, a: 1}
@@ -1083,8 +1559,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1980432645
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 97d2bc11954e6e14bbd4de7bd3a28d3d, type: 3}
   m_Color: {r: 0.17647058, g: 0.17647058, b: 0.17647058, a: 1}
@@ -1124,8 +1600,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1980432645
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 97d2bc11954e6e14bbd4de7bd3a28d3d, type: 3}
   m_Color: {r: 0.17647058, g: 0.17647058, b: 0.17647058, a: 1}
@@ -1165,8 +1641,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1980432645
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 97d2bc11954e6e14bbd4de7bd3a28d3d, type: 3}
   m_Color: {r: 0.17647058, g: 0.17647058, b: 0.17647058, a: 1}
@@ -1206,8 +1682,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1980432645
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 97d2bc11954e6e14bbd4de7bd3a28d3d, type: 3}
   m_Color: {r: 0.17647058, g: 0.17647058, b: 0.17647058, a: 1}

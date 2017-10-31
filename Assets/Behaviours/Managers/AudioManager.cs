@@ -12,6 +12,7 @@ public class AudioManager : MonoBehaviour
 
     private AudioSource music_source;
     private AudioSource sfx_source;
+    private AudioSource sfx_unscaled_source;
 
     private AudioClip last_clip_played;
 
@@ -31,6 +32,24 @@ public class AudioManager : MonoBehaviour
 
         if (_clip != null)
             instance.sfx_source.PlayOneShot(_clip);
+    }
+
+
+    public static void PlayOneShotUnscaled(string _clip_name)
+    {
+        PlayOneShotUnscaled(instance.GetAudioClip(_clip_name));
+    }
+
+
+    public static void PlayOneShotUnscaled(AudioClip _clip)
+    {
+        if (instance.last_clip_played == _clip)
+            return;
+
+        instance.last_clip_played = _clip;
+
+        if (_clip != null)
+            instance.sfx_unscaled_source.PlayOneShot(_clip);
     }
 
 
@@ -85,9 +104,11 @@ public class AudioManager : MonoBehaviour
 
         music_source = audio_parent.AddComponent<AudioSource>();
         sfx_source = audio_parent.AddComponent<AudioSource>();
+        sfx_unscaled_source = audio_parent.AddComponent<AudioSource>();
 
         music_source.volume = settings.music_volume;
         sfx_source.volume = settings.sfx_volume;
+        sfx_unscaled_source.volume = settings.sfx_volume;
 
         PlayRandomMusic();
     }

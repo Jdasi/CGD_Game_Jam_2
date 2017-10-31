@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4690292388975538}
   - component: {fileID: 198318613801805068}
   - component: {fileID: 199150566360169018}
+  - component: {fileID: 114746725639512678}
   m_Layer: 0
   m_Name: Gun_Particle
   m_TagString: Untagged
@@ -35,12 +36,23 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1247077968793682}
   m_LocalRotation: {x: -0.49999976, y: 0.5000002, z: -0.5000003, w: 0.4999998}
-  m_LocalPosition: {x: 4.15, y: -0.25, z: -0}
+  m_LocalPosition: {x: -32.662197, y: 22.20732, z: -30.493725}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -180, y: -90, z: 89.99999}
+--- !u!114 &114746725639512678
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1247077968793682}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d769b8b598defa4ab0416bf47a163f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!198 &198318613801805068
 ParticleSystem:
   m_ObjectHideFlags: 1
@@ -98,7 +110,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -1079888005
+  randomSeed: 638448005
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -3203,8 +3215,8 @@ ParticleSystemRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1980432645
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_RenderMode: 1
   m_SortMode: 0

@@ -4,30 +4,39 @@ using UnityEngine;
 
 public class LevelManager : MonoBehaviour
 {
-    public Camera main_cam;
-    public Camera sniper_cam;
-
-    public GameObject player;
-    public GameObject target;
+    [SerializeField] Vector3 sniper_cam_goto;
+    [SerializeField] float level_time_limit;
+    [SerializeField] float final_killcam_delay = 3.0f;
 
     public float level_timer;
-    public float level_time_limit;
+    private bool target_dead;
 
-    private bool cinematic_played;
 
-    // Use this for initialization
+
     void Start()
     {
         // Set Timer
         level_timer = 0;
     }
 
-    // Update is called once per frame
+
     void Update()
     {
-        level_timer += Time.deltaTime;
+        CheckTimer();
 
-        if (level_timer > level_time_limit)
+        if (target_dead)
+            StartCoroutine(EndLevel(final_killcam_delay));
+    }
+
+
+    void CheckTimer()
+    {
+        level_timer += Time.deltaTime;
+        float prev_timer = level_timer;
+
+        // If the player has Run out of time! GAMEOVER
+        if (level_timer >= level_time_limit &&
+                prev_timer < level_time_limit)
         {
             // Game Over!
             Debug.Log("MISSION FAILED");
@@ -35,60 +44,38 @@ public class LevelManager : MonoBehaviour
     }
 
 
-
-    public void PlayerInPosition()
-    {
-        if (cinematic_played != false)
-            return;
-
-        EnableTarget();
-        PlayCinematic();
-    }
-
-
-
-    private void EnableTarget()
-    {
-        if (target.activeInHierarchy)
-            return;
-        
-        target.gameObject.SetActive(true);
-    }
-
-
-
-    private void PlayCinematic()
-    {
-        // Stops PlayerInPosition getting called more than once
-        cinematic_played = true;
-
-        sniper_cam.GetComponent<SniperCamera>().SetPosition();
-
-        // Switch Camera for Cinematic...
-        sniper_cam.gameObject.SetActive(true);
-        main_cam.gameObject.SetActive(false);
-    }
-
-
-
-    // Switch Cameras...
-
     // These get called by Triggers in the Level
-    public void SetCameraMain()
+    public void SetCameraPlayer()
     {
-        main_cam.gameObject.SetActive(true);
-        sniper_cam.gameObject.SetActive(false);
+        GameManager.scene.camera_manager.SetTarget(GameManager.scene.player.bod.transform);
     }
-
 
 
     public void SetCameraSniper()
     {
-        if (cinematic_played != true)
-            return;
+        GameManager.scene.camera_manager.SetTarget(sniper_cam_goto);
+    }
 
-        sniper_cam.gameObject.SetActive(true);
-        main_cam.gameObject.SetActive(false);
+
+    void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawSphere(sniper_cam_goto, 1);
+    }
+
+
+    // Called By the Target
+    public void TargetKilled()
+    {
+        target_dead = true;
+    }
+
+    
+    IEnumerator EndLevel(float _delay)
+    {
+        yield return new WaitForSeconds(_delay);
+
+        Debug.Log("Target Dead, End Level");
     }
 }
 

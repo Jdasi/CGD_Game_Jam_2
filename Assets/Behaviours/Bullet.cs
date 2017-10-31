@@ -13,8 +13,8 @@ public class Bullet : MonoBehaviour
 
     private Vector3 dir;
     private RaycastHit2D expected_hit;
-    private float progress;
     private List<Scuffable> things_scuffed = new List<Scuffable>();
+    private float progress;
 
 
     public void Init(Vector3 _dir, RaycastHit2D _hit)
@@ -26,7 +26,7 @@ public class Bullet : MonoBehaviour
 
     void Start()
     {
-
+        GeneralCanvas.distance_text.gameObject.SetActive(true);
     }
 
 
@@ -34,16 +34,24 @@ public class Bullet : MonoBehaviour
     {
         Vector3 prev_pos = transform.position;
 
-        progress += speed * Time.unscaledDeltaTime;
+        dir = ((Vector3)expected_hit.rigidbody.position - transform.position).normalized;
         transform.position += dir * speed * Time.unscaledDeltaTime;
+        transform.rotation = Quaternion.LookRotation(dir);
+
+        float dist_to_target = Vector3.Distance(transform.position, expected_hit.rigidbody.position);
+        progress += speed * Time.unscaledDeltaTime;
+        GeneralCanvas.distance_text.text = (progress / 5).ToString("F2") + "m";
 
         Vector3 current_pos = transform.position;
 
         ScuffCheck(prev_pos, current_pos);
 
-        if (progress >= expected_hit.distance)
+        if (dist_to_target < 0.5f)
         {
-            expected_hit.rigidbody.AddForce(dir * force);
+            TargetableBody targetable = expected_hit.rigidbody.GetComponent<TargetableBody>();
+            if (targetable != null)
+                targetable.Hit(new BulletImpact(transform.position, dir, expected_hit.rigidbody));
+
             trajectory_complete = true;
 
             Destroy(this.gameObject);
@@ -64,8 +72,14 @@ public class Bullet : MonoBehaviour
         if (scuffable == null || things_scuffed.Contains(scuffable))
             return;
 
-        scuffable.Scuff(hit.point);
+        scuffable.Scuff(new BulletImpact(hit.point, diff, expected_hit.rigidbody));
         things_scuffed.Add(scuffable);
+    }
+
+
+    void OnDestroy()
+    {
+        GeneralCanvas.distance_text.gameObject.SetActive(false);
     }
 
 }

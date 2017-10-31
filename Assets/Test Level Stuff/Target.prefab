@@ -22,13 +22,14 @@ GameObject:
   - component: {fileID: 212418068096189996}
   - component: {fileID: 61289386623190118}
   - component: {fileID: 114919083554190758}
+  - component: {fileID: 114685719228418286}
   m_Layer: 0
   m_Name: Target
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4321149479214892
 Transform:
   m_ObjectHideFlags: 1
@@ -36,7 +37,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1925784456583638}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 132.81123, y: 8.82909, z: 0}
+  m_LocalPosition: {x: 145, y: 8.82909, z: 0}
   m_LocalScale: {x: 4, y: 4, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -67,6 +68,17 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &114685719228418286
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1925784456583638}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c3c09a848f3b634f8bea30bae0ff8f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114919083554190758
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -78,9 +90,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc5703e65e8dc9f418babe7c262c1c89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cin_cam: {fileID: 0}
-  player: {fileID: 0}
-  spawn_pos: {fileID: 0}
+  move_pos: {fileID: 0}
 --- !u!212 &212418068096189996
 SpriteRenderer:
   m_ObjectHideFlags: 1
