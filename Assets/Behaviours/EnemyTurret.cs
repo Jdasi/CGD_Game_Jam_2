@@ -89,6 +89,11 @@ public class EnemyTurret : MonoBehaviour
                 engaging = false;
         }
 
+        if (player_dist > engage_distance)
+        {
+            engaging = false;
+        }
+
         laser_line.enabled = engaging;
     }
 
