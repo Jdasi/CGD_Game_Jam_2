@@ -1701,6 +1701,12 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7e3840714916f7442b7c5d58e2260cf7, type: 2}
   m_IsPrefabParent: 0
+--- !u!114 &1459285369 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114084865000890604, guid: 4d94ec59212f94743b3e757742f04b99,
+    type: 2}
+  m_PrefabInternal: {fileID: 1959253039}
+  m_Script: {fileID: 11500000, guid: 36bc09fff0dfd03448383b9d2d7b2096, type: 3}
 --- !u!1 &1486599907
 GameObject:
   m_ObjectHideFlags: 0
@@ -2569,6 +2575,16 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 114390566769177168, guid: 4d94ec59212f94743b3e757742f04b99,
+        type: 2}
+      propertyPath: hit_events.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114367136134889706, guid: 4d94ec59212f94743b3e757742f04b99,
+        type: 2}
+      propertyPath: trigger_events.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4735437044204686, guid: 4d94ec59212f94743b3e757742f04b99, type: 2}
       propertyPath: m_LocalPosition.x
       value: 74.16
@@ -2606,6 +2622,66 @@ Prefab:
       propertyPath: trigger_events.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 848478906}
+    - target: {fileID: 114390566769177168, guid: 4d94ec59212f94743b3e757742f04b99,
+        type: 2}
+      propertyPath: hit_events.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114390566769177168, guid: 4d94ec59212f94743b3e757742f04b99,
+        type: 2}
+      propertyPath: hit_events.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114390566769177168, guid: 4d94ec59212f94743b3e757742f04b99,
+        type: 2}
+      propertyPath: hit_events.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1459285369}
+    - target: {fileID: 114390566769177168, guid: 4d94ec59212f94743b3e757742f04b99,
+        type: 2}
+      propertyPath: hit_events.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: IsDead
+      objectReference: {fileID: 0}
+    - target: {fileID: 114390566769177168, guid: 4d94ec59212f94743b3e757742f04b99,
+        type: 2}
+      propertyPath: hit_events.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 114390566769177168, guid: 4d94ec59212f94743b3e757742f04b99,
+        type: 2}
+      propertyPath: hit_events.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1459285369}
+    - target: {fileID: 114390566769177168, guid: 4d94ec59212f94743b3e757742f04b99,
+        type: 2}
+      propertyPath: hit_events.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: IsDead
+      objectReference: {fileID: 0}
+    - target: {fileID: 114367136134889706, guid: 4d94ec59212f94743b3e757742f04b99,
+        type: 2}
+      propertyPath: trigger_events.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114367136134889706, guid: 4d94ec59212f94743b3e757742f04b99,
+        type: 2}
+      propertyPath: trigger_events.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114367136134889706, guid: 4d94ec59212f94743b3e757742f04b99,
+        type: 2}
+      propertyPath: trigger_events.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1459285369}
+    - target: {fileID: 114367136134889706, guid: 4d94ec59212f94743b3e757742f04b99,
+        type: 2}
+      propertyPath: trigger_events.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: IsDead
+      objectReference: {fileID: 0}
+    - target: {fileID: 114367136134889706, guid: 4d94ec59212f94743b3e757742f04b99,
+        type: 2}
+      propertyPath: trigger_events.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4d94ec59212f94743b3e757742f04b99, type: 2}
   m_IsPrefabParent: 0
