@@ -19,6 +19,7 @@ public class EnemyTurret : MonoBehaviour
     [SerializeField] GameObject bullet_prefab;
     [SerializeField] GameObject shoot_particle_prefab;
     [SerializeField] LineRenderer laser_line;
+    [SerializeField] LayerMask default_layer;
 
     [Header("Effects")]
     [SerializeField] Sprite broken_lightbulb;
@@ -27,7 +28,7 @@ public class EnemyTurret : MonoBehaviour
     [SerializeField] Color disabled_color;
 
     private Rigidbody2D player_bod;
-    private bool engaging = true;
+    private bool engaging = false;
     private Vector3 dir;
     private float shoot_timer;
 
@@ -56,8 +57,9 @@ public class EnemyTurret : MonoBehaviour
         if (player_bod == null)
             player_bod = GameManager.scene.player.bod;
 
-        float player_dist = Vector3.Distance(transform.position, player_bod.transform.position);
-        laser_line.enabled = engaging = player_dist <= engage_distance;
+        dir = (player_bod.transform.position - transform.position).normalized;
+
+        SetEngaging();
 
         status_indicator.color = engaging ? engaging_color : scanning_color;
 
@@ -68,6 +70,26 @@ public class EnemyTurret : MonoBehaviour
         {
             HandleEngagement();
         }
+    }
+
+
+    void SetEngaging()
+    {
+        float dist = Vector3.Distance(player_bod.transform.position, turret_barrel.transform.position);
+
+        float player_dist = Vector3.Distance(transform.position, player_bod.transform.position);
+
+        if (player_dist < engage_distance)
+        {
+            if (!Physics2D.Raycast(turret_barrel.transform.position, dir, dist, default_layer))
+            {
+                engaging = true;
+            }
+            else
+                engaging = false;
+        }
+
+        laser_line.enabled = engaging;
     }
 
 
