@@ -21,6 +21,7 @@ public class EnemyTurret : MonoBehaviour
     [SerializeField] LineRenderer laser_line;
 
     [Header("Effects")]
+    [SerializeField] Sprite broken_lightbulb;
     [SerializeField] Color scanning_color;
     [SerializeField] Color engaging_color;
     [SerializeField] Color disabled_color;
@@ -35,6 +36,7 @@ public class EnemyTurret : MonoBehaviour
     {
         this.enabled = false;
         status_indicator.color = disabled_color;
+        status_indicator.sprite = broken_lightbulb;
 
         turret_base.gameObject.layer = 0;
         turret_barrel.gameObject.layer = 0;

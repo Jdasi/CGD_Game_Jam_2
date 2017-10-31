@@ -53,7 +53,7 @@ public class HookAiming : MonoBehaviour
 
     void HandleHookRelease()
     {
-        if (!hook_attached || !Input.GetButtonUp("Fire2"))
+        if (!hook_attached || !Input.GetButtonUp("Fire2") || hook_point == null)
             return;
 
         Destroy(hook_point.gameObject);
@@ -67,7 +67,7 @@ public class HookAiming : MonoBehaviour
 
     void UpdateHook()
     {
-        if (hook_attached)
+        if (hook_attached && hook_point != null)
         {
             hook_line.enabled = true;
             hook_line.SetPosition(0, hand_rb.transform.position);
@@ -83,6 +83,9 @@ public class HookAiming : MonoBehaviour
     void FixedUpdate()
     {
         if (!hook_attached)
+            return;
+
+        if (hook_point == null)
             return;
 
         Vector3 dir = (hook_point.position - hand_rb.transform.position).normalized;
