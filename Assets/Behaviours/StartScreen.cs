@@ -15,11 +15,18 @@ public class StartScreen : MonoBehaviour
     private bool loading = false;
 
 
+    void Start()
+    {
+        AudioManager.PlayMusic(MusicType.TITLE);
+    }
+
+
     private void Update()
     {
         if (!Input.GetButtonDown("Submit") || loading)
             return;
 
+        AudioManager.PlayOneShot("gun_shot");
         start_title.SetActive((false));
         loading = true;
         StartGame();
