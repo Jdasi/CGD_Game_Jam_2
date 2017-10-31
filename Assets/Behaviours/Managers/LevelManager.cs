@@ -1,18 +1,28 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
+
+[Serializable]
+enum Target
+{
+    GANNON,
+    DUCHARME,
+    NABEEM
+}
+
 
 public class LevelManager : MonoBehaviour
 {
     [SerializeField] UnityEvent on_level_complete;
     [SerializeField] float level_time_limit;
     [SerializeField] float final_killcam_delay = 3.0f;
+    [SerializeField] Target level_target = Target.NABEEM;
 
     public float level_timer;
     public bool level_finished { get; set; }
-
 
 
     void Start()
@@ -31,11 +41,11 @@ public class LevelManager : MonoBehaviour
         if (!level_finished)
             return;
 
-        Debug.Log("end");
 
         if (Input.anyKeyDown)
         {
             GeneralCanvas.GameEnd();
+            PlayerStatus.immune = false;
             SceneManager.LoadScene(1);
         }
     }
@@ -59,6 +69,21 @@ public class LevelManager : MonoBehaviour
     // Called By the Target
     public void TargetKilled()
     {
+        switch (level_target)
+            {
+                case Target.GANNON:
+                    MapInfo.gannonAlive = false;
+                    break;
+                case Target.DUCHARME:
+                    MapInfo.ducharmeAlive = false;
+                    break;
+                case Target.NABEEM:
+                    MapInfo.nabeemAlive = false;
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+        PlayerStatus.immune = true;
         StartCoroutine(EndLevel(final_killcam_delay));
     }
 
