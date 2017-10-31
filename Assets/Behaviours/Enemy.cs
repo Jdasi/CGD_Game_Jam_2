@@ -97,6 +97,16 @@ public class Enemy : MonoBehaviour
                     current_sprite = 0;
                 }
             }
+            if (GetComponent<Rigidbody2D>().velocity.magnitude < 1.0f)
+            {
+                if (GetComponent<AudioSource>().pitch >= 1)
+                    GetComponent<AudioSource>().pitch -= Time.deltaTime/5;
+            }
+            else
+            {
+                if (GetComponent<AudioSource>().pitch <= 1.25f)
+                GetComponent<AudioSource>().pitch += Time.deltaTime/5;
+            }
         }
         if (!movement_active)
         {
