@@ -13,6 +13,7 @@ public class PlayerStatus : MonoBehaviour
     [SerializeField] float hurt_fade_time;
 
     private int current_health;
+    public static bool immune = false;
 
 
     public void Kill()
@@ -24,7 +25,7 @@ public class PlayerStatus : MonoBehaviour
     
     public void Damage(int _amount)
     {
-        if (!alive)
+        if (!alive || immune)
             return;
 
         current_health -= _amount;

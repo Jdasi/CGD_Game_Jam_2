@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class MapInfo : MonoBehaviour {
+public class MapInfo : MonoBehaviour
+{
 
-    public static bool gannonAlive;
-    public static bool ducharmeAlive;
-    public static bool nabeemAlive;
+    public static bool gannonAlive = true;
+    public static bool ducharmeAlive = true;
+    public static bool nabeemAlive = true;
 
     public Button Mission1Alive;
     public Button Mission2Alive;
@@ -20,10 +21,6 @@ public class MapInfo : MonoBehaviour {
 	// Use this for initialization
 	void Start ()
     {
-        gannonAlive = true;
-        ducharmeAlive = true;
-        nabeemAlive = true;
-
         CheckCharacters();
 	}
 
