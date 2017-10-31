@@ -12,6 +12,7 @@ public class PlayerStatus : MonoBehaviour
     [SerializeField] Color hurt_color;
     [SerializeField] float hurt_fade_time;
     [SerializeField] Vector3 lastPosition = Vector3.zero;
+    [SerializeField] GameObject blood_splat;
 
     private int current_health;
     public static bool immune = false;
@@ -21,6 +22,10 @@ public class PlayerStatus : MonoBehaviour
     {
         current_health = 0;
         death_events.Invoke();
+
+        AudioManager.PlayOneShot("blood_hit");
+        Instantiate(blood_splat, GameManager.scene.player.bod.position,
+            Quaternion.identity);
     }
 
     

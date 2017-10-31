@@ -538,7 +538,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1773906681504676}
   m_LocalRotation: {x: -0, y: -0, z: 0.011287331, w: 0.99993634}
-  m_LocalPosition: {x: -2.53, y: 0.38, z: 0}
+  m_LocalPosition: {x: -54.9, y: -0.9, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4675632479057590}
@@ -1872,6 +1872,8 @@ MonoBehaviour:
   hurt_color: {r: 1, g: 0, b: 0, a: 0.09803922}
   hurt_fade_time: 0.33
   lastPosition: {x: 0, y: 0, z: 0}
+  blood_splat: {fileID: 1760822168114440, guid: d362bee2660ff6c41a6975422ea6c8ef,
+    type: 2}
 --- !u!114 &114313904074000148
 MonoBehaviour:
   m_ObjectHideFlags: 1
