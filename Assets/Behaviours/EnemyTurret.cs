@@ -75,13 +75,11 @@ public class EnemyTurret : MonoBehaviour
 
     void SetEngaging()
     {
-        float dist = Vector3.Distance(player_bod.transform.position, turret_barrel.transform.position);
-
-        float player_dist = Vector3.Distance(transform.position, player_bod.transform.position);
+         float player_dist = Vector3.Distance(transform.position, player_bod.transform.position);
 
         if (player_dist < engage_distance)
         {
-            if (!Physics2D.Raycast(turret_barrel.transform.position, dir, dist, default_layer))
+            if (!Physics2D.Raycast(turret_barrel.transform.position, dir, player_dist, default_layer))
             {
                 engaging = true;
             }
