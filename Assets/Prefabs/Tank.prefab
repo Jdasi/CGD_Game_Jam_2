@@ -202,7 +202,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1676709971624712}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1.3950005, y: -0.914, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -215,7 +215,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1923098103501150}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.581, y: -0.914, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -228,7 +228,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1590042751502516}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.22, y: -0.914, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -583,6 +583,7 @@ MonoBehaviour:
   range: 30
   min_angle: 30
   max_angle: 120
+  direction: -1
 --- !u!114 &114880161349129564
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -595,6 +596,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   control: 0
+  flipDelay: 1
   destination_list:
   - {fileID: 0}
   - {fileID: 0}
@@ -606,6 +608,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: aa40537c96fefae4580dee84356b4768, type: 3}
   - {fileID: 21300000, guid: 909281afb4415414c89e2f6c08ac3721, type: 3}
   - {fileID: 21300000, guid: ce9b82144537ccd438163adfeadd62ea, type: 3}
+  flip: 0
 --- !u!114 &114951128274605684
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -781,7 +784,7 @@ WheelJoint2D:
   m_ConnectedRigidBody: {fileID: 50034707680856900}
   m_BreakForce: Infinity
   m_BreakTorque: Infinity
-  m_AutoConfigureConnectedAnchor: 0
+  m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 1.3949999, y: -0.914}
   m_ConnectedAnchor: {x: 0, y: 0}
   m_Suspension:
@@ -804,7 +807,7 @@ WheelJoint2D:
   m_ConnectedRigidBody: {fileID: 50913009083259120}
   m_BreakForce: Infinity
   m_BreakTorque: Infinity
-  m_AutoConfigureConnectedAnchor: 0
+  m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: -0.21999936, y: -0.914}
   m_ConnectedAnchor: {x: 0, y: 0}
   m_Suspension:
@@ -827,8 +830,8 @@ WheelJoint2D:
   m_ConnectedRigidBody: {fileID: 50651447474932138}
   m_BreakForce: Infinity
   m_BreakTorque: Infinity
-  m_AutoConfigureConnectedAnchor: 0
-  m_Anchor: {x: -1.0779998, y: -0.914}
+  m_AutoConfigureConnectedAnchor: 1
+  m_Anchor: {x: -1.0780005, y: -0.914}
   m_ConnectedAnchor: {x: 0, y: 0}
   m_Suspension:
     m_DampingRatio: 0.7
@@ -850,7 +853,7 @@ WheelJoint2D:
   m_ConnectedRigidBody: {fileID: 50560434987856264}
   m_BreakForce: Infinity
   m_BreakTorque: Infinity
-  m_AutoConfigureConnectedAnchor: 0
+  m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0.5810006, y: -0.914}
   m_ConnectedAnchor: {x: 0, y: 0}
   m_Suspension:

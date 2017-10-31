@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Weapon : MonoBehaviour {
+public class Weapon : MonoBehaviour
+{
     public bool able_to_shoot;
     public Transform SpawnPosition;
     public Rigidbody2D projectile;
@@ -10,14 +11,16 @@ public class Weapon : MonoBehaviour {
     private float timer = 0.0f;
     public float shoot_delay = 1;
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-        if(!able_to_shoot)
+    // Use this for initialization
+    void Start()
+    {
+
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        if (!able_to_shoot)
         {
             timer += Time.deltaTime;
             if (timer > shoot_delay)
@@ -25,17 +28,18 @@ public class Weapon : MonoBehaviour {
                 able_to_shoot = true;
             }
         }
-        
-	}
 
-    public void Shoot()
+    }
+
+    public void Shoot(DIRECTION_X direction)
     {
         // if able to shoot
         if (!able_to_shoot) return;
 
         Rigidbody2D shot = Instantiate(projectile, SpawnPosition.position, SpawnPosition.rotation) as Rigidbody2D;
-        shot.AddForce(-SpawnPosition.right * force);
-
+        shot.AddForce((int)direction * SpawnPosition.right * force);
+        if (direction == DIRECTION_X.RIGHT)
+            projectile.GetComponent<SpriteRenderer>().flipX = true;
         able_to_shoot = false;
         timer = 0.0f;
     }
