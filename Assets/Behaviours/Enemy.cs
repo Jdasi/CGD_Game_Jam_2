@@ -11,7 +11,8 @@ public enum ENEMY_TYPE
 public class Enemy : MonoBehaviour
 {
     public bool control;
-    public List <Transform> destination_list;
+    public float flipDelay = 1.0f;
+    public List<Transform> destination_list;
     private Transform destination;
     int current_dest = 0;
     private float movement;
@@ -21,11 +22,16 @@ public class Enemy : MonoBehaviour
     public SpriteRenderer spriteRenderer;
     public List<Sprite> spriteList;
     private float frameTimer;
+    private float flipTimer = 0.0f;
     private int current_sprite = 0;
+    private Turret tank_turret;
+    public bool flip;
+    private bool movement_active = true;
     // Use this for initialization
     void Start()
     {
         destination = destination_list[current_dest];
+        tank_turret = GetComponentInChildren<Turret>();
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
@@ -35,6 +41,11 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (flip)
+        {
+            ChangeDirection();
+            flip = false;
+        }
         if (control)
         {
             if (Input.GetKeyDown(KeyCode.A))
@@ -46,7 +57,7 @@ public class Enemy : MonoBehaviour
                 movement = -1;
             }
         }
-        if (destination != null)
+        if (destination != null && movement_active)
         {
             prev_movement = movement;
             float distance = transform.position.x - destination.position.x;
@@ -57,35 +68,58 @@ public class Enemy : MonoBehaviour
             else if (distance <= -1.5f)
             {
                 movement = -1;
-               
+
             }
             else
             {
                 movement = 0;
                 current_dest++;
-                if(current_dest>= destination_list.Count)
+                if (current_dest >= destination_list.Count)
                 {
                     current_dest = 0;
                 }
                 destination = destination_list[current_dest];
             }
-            //if(prev_movement!=movement && prev_movement !=0)
-            //{
-            //    transform.Rotate(Vector3.up, -180);
-            //    WheelRotation.Rotate(Vector3.up, -180);
-            //}
+
+            if (prev_movement != movement && prev_movement != 0)
+            {
+                movement_active = false;
+            }
             frameTimer += Time.deltaTime;
             //Debug.Log(GetComponent<Rigidbody2D>().velocity.magnitude);
-            if(movement!=0 && frameTimer >= 0.5/ GetComponent<Rigidbody2D>().velocity.magnitude)
+            if (movement != 0 && frameTimer >= 0.5 / GetComponent<Rigidbody2D>().velocity.magnitude)
             {
                 frameTimer = 0;
                 spriteRenderer.sprite = spriteList[current_sprite];
                 current_sprite++;
-                if(current_sprite>=spriteList.Count)
+                if (current_sprite >= spriteList.Count)
                 {
                     current_sprite = 0;
                 }
             }
+        }
+        if (!movement_active)
+        {
+            flipTimer += Time.deltaTime;
+            if (flipTimer > flipDelay)
+            {
+                flipTimer = 0;
+                ChangeDirection();
+                movement_active = true;
+            }
+        }
+    }
+
+    void ChangeDirection()
+    {
+        transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
+        if (tank_turret.direction == DIRECTION_X.LEFT)
+        {
+            tank_turret.direction = DIRECTION_X.RIGHT;
+        }
+        else
+        {
+            tank_turret.direction = DIRECTION_X.LEFT;
         }
     }
 
