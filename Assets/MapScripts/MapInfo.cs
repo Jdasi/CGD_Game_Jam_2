@@ -26,7 +26,7 @@ public class MapInfo : MonoBehaviour {
 
         CheckCharacters();
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
 		

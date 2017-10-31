@@ -39,7 +39,7 @@ public class DestructableWindow : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Player") || other.CompareTag("Ragdoll"))
+        if (other.CompareTag("Player") || other.CompareTag("Ragdoll") || other.CompareTag("Debris"))
         {
             if (!fired)
                 Break();

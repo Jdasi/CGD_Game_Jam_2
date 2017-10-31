@@ -6,6 +6,7 @@ public class EnemyBullet : MonoBehaviour
 {
     [SerializeField] float bullet_speed;
     [SerializeField] float bullet_force;
+    [SerializeField] int damage;
     [SerializeField] float destroy_delay;
     [SerializeField] LayerMask hit_layers;
     
@@ -46,6 +47,7 @@ public class EnemyBullet : MonoBehaviour
         if (hit.collider.CompareTag("Player"))
         {
             hit.rigidbody.AddForce(dir * bullet_force, ForceMode2D.Impulse);
+            hit.transform.GetComponentInParent<PlayerStatus>().Damage(damage);
         }
 
         Destroy(this.gameObject);

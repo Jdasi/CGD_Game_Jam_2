@@ -1,20 +1,22 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class RagdollEffects : MonoBehaviour
 {
-    [SerializeField]
-    float bullet_hit_force;
-    [SerializeField]
-    GameObject blood_splat;
-    [SerializeField]
-    Hover hover_script;
+    [SerializeField] float bullet_hit_force;
+    [SerializeField] GameObject blood_splat;
+    [SerializeField] UnityEvent on_death;
+
+    private Hover hover_script;
+
 
     void Start()
     {
         hover_script = GetComponent<Hover>();
     }
+
 
     public void HitHead(BulletImpact _impact)
     {
@@ -49,6 +51,7 @@ public class RagdollEffects : MonoBehaviour
         if (hover_script.GetAlive())
         {
             hover_script.SetAlive(false);
+            on_death.Invoke();
         }
 
         _impact.body.AddForce(_impact.dir * bullet_hit_force, ForceMode2D.Impulse);
