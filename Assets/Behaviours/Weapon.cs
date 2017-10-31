@@ -36,6 +36,8 @@ public class Weapon : MonoBehaviour
         // if able to shoot
         if (!able_to_shoot) return;
 
+        AudioManager.PlayOneShot("TankShot");
+
         Rigidbody2D shot = Instantiate(projectile, SpawnPosition.position, SpawnPosition.rotation) as Rigidbody2D;
         shot.AddForce((int)direction * SpawnPosition.right * force);
         if (direction == DIRECTION_X.RIGHT)
