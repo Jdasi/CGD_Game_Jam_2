@@ -11,6 +11,7 @@ public class PlayerStatus : MonoBehaviour
     [SerializeField] UnityEvent death_events;
     [SerializeField] Color hurt_color;
     [SerializeField] float hurt_fade_time;
+    [SerializeField] Vector3 lastPosition = Vector3.zero;
 
     private int current_health;
     public static bool immune = false;
@@ -42,5 +43,4 @@ public class PlayerStatus : MonoBehaviour
     {
         current_health = starting_health;
     }
-    
 }
