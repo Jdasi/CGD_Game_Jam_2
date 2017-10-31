@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -1542,10 +1542,10 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 0.95
-  m_Text: The rotten cancer of Ducharme's policies ravages San Escobar like a plague.
-    His relentless disdain for people on wheelchairs steals the lives of men, women
-    and children alike. The arogance of his bureaucrats is only matched by the brutality
-    of his soldiers. These are the darkest days of Ducharme's rule in San Escobar.
+  m_Text: Ducharme's policies ravage San Escobar like a plague. His relentless disdain
+    for people on wheelchairs steals the lives of men, women and children alike. The
+    arogance of his bureaucrats is only matched by the brutality of his soldiers.
+    These are the darkest days of Ducharme's rule in San Escobar.
 --- !u!222 &323742051
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4554,14 +4554,12 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 0.67
-  m_Text: 'For three days I have hunted him. For three days luck alone has saved his
-    wretched life. Sniping your enemy is like hunting any other animal. Fire at the
-    wrong moment and your chance will be forever lost.
+  m_Text: 'During his time in power, Counselor Gannon has hurt many in San Sombrero.
+    His shady dealings have cost   the state a hefty sum, all taken from public money.
 
 
-    With his web of lies now broken, nothing stands between Me and Gannon. Every day
-    I carve deeper through his traps. Every day, fear and desperation drive me closer.
-    When I reach the city, he will have nowhere to hide.'
+    It   is   time to show Gannon, and  those willing  to  follow his corrupt  footsteps   that   there
+    is no room  for such practice. '
 --- !u!222 &1508828519
 CanvasRenderer:
   m_ObjectHideFlags: 0
