@@ -9,5 +9,8 @@ EditorBuildSettings:
     path: Assets/Scenes/Start Screen.unity
     guid: 671ba369467fefb45ae187382fb512e4
   - enabled: 1
+    path: Assets/Scenes/Map.unity
+    guid: fda702a729fe745469e44b019b5b8da8
+  - enabled: 1
     path: Assets/Levels/New Level 1.unity
     guid: 2e1edd96c7efd1049b5e4e6d5955809f
