@@ -9,5 +9,6 @@ public class SpawnExplosion : MonoBehaviour
     public void Explosion()
     {
         Instantiate(explosion, transform.position, transform.rotation);
+        AudioManager.PlayOneShot("Explosion");
     }
 }
